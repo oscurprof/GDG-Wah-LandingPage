@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Profile | GDG Wah Campus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .profile-grid {
+                grid-template-columns: 300px 1fr;
+            }
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-badge.active {
+            background-color: #E6F4EA;
+            color: #0F9D58;
+        }
+
+        .skill-tag {
+            background-color: #E8F0FE;
+            color: #4285F4;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            background-color: #4285F4;
+            color: white;
+        }
+
+        .gdg-blue { color: #4285F4; }
+        .gdg-red { color: #DB4437; }
+        .gdg-yellow { color: #F4B400; }
+        .gdg-green { color: #0F9D58; }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #4285f4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Header -->
+    <header class="bg-white sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/4285F4/FFFFFF?text=G" alt="GDG Logo" class="rounded-full">
+                <span class="text-xl font-bold text-gray-700">GDG <span class="font-semibold text-gray-500">Wah Campus</span></span>
+            </a>
+            <a href="index.html" class="bg-blue-600 text-white font-bold px-5 py-2 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+                &larr; Back to Home
+            </a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <!-- Loading state -->
+        <div id="loading-state" class="text-center py-20">
+            <div class="loading-spinner mx-auto mb-4"></div>
+            <p class="text-lg text-gray-500">Loading Member Profile...</p>
+        </div>
+
+        <!-- Error state -->
+        <div id="error-state" class="hidden text-center py-20">
+            <div class="max-w-md mx-auto">
+                <div class="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
+                    <i data-lucide="user-x" class="w-8 h-8 text-red-500"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Profile Not Found</h2>
+                <p class="text-gray-600 mb-6" id="error-message"></p>
+                <a href="index.html" class="inline-block bg-blue-600 text-white font-bold px-6 py-3 rounded-full hover:bg-blue-700 transition-colors">
+                    Go Back to Home
+                </a>
+            </div>
+        </div>
+
+        <!-- Network Error state -->
+        <div id="network-error-state" class="hidden text-center py-20">
+            <div class="max-w-md mx-auto">
+                <div class="w-16 h-16 mx-auto mb-4 bg-yellow-100 rounded-full flex items-center justify-center">
+                    <i data-lucide="wifi-off" class="w-8 h-8 text-yellow-500"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Network Error</h2>
+                <p class="text-gray-600 mb-6">Unable to load member data. Please check your connection and try again.</p>
+                <button onclick="location.reload()" class="inline-block bg-blue-600 text-white font-bold px-6 py-3 rounded-full hover:bg-blue-700 transition-colors mr-4">
+                    Try Again
+                </button>
+                <a href="index.html" class="inline-block bg-gray-600 text-white font-bold px-6 py-3 rounded-full hover:bg-gray-700 transition-colors">
+                    Go Back to Home
+                </a>
+            </div>
+        </div>
+
+        <!-- Profile content -->
+        <div id="profile-content" class="hidden">
+            <!-- Content will be injected here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-16 mt-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <img src="https://placehold.co/40x40/FFFFFF/4285F4?text=G" alt="GDG Logo" class="rounded-full">
+                <span class="text-xl font-bold">GDG Wah Campus</span>
+            </div>
+            <p class="text-gray-400">&copy; 2025 GDG Wah Campus. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Initialize lucide icons
+            lucide.createIcons();
+
+            // Get member ID from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const memberId = urlParams.get('id');
+
+            if (!memberId) {
+                showError('No member ID provided in the URL. Please use format: member.html?id=GDG-M001');
+                return;
+            }
+
+            try {
+                // Fetch member data from JSON file
+                const response = await fetch('members.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Find the member with the given ID
+                const member = data.members.find(m => m.id === memberId);
+
+                if (member) {
+                    displayProfile(member);
+                } else {
+                    showError(`Member with ID "${memberId}" could not be found. Available member IDs: ${data.members.map(m => m.id).join(', ')}`);
+                }
+
+            } catch (error) {
+                console.error('Error fetching member data:', error);
+                showNetworkError('Failed to load member data. Please ensure members.json file exists and is accessible.');
+            }
+        });
+
+        function displayProfile(member) {
+            // Update page title
+            document.title = `${member.name} | GDG Wah Campus`;
+
+            // Hide loading state
+            document.getElementById('loading-state').classList.add('hidden');
+
+            // Show profile content
+            const profileContent = document.getElementById('profile-content');
+            profileContent.classList.remove('hidden');
+
+            // Generate profile HTML
+            profileContent.innerHTML = `
+                <div class="relative">
+                    <!-- Cover Image and Profile Picture -->
+                    <div class="h-48 md:h-64 rounded-2xl overflow-hidden relative">
+                        <img src="${member.coverImageUrl}" alt="${member.name}'s cover photo" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                    </div>
+                    <div class="absolute top-32 md:top-44 left-1/2 -translate-x-1/2 md:left-12 md:-translate-x-0">
+                        <img src="${member.imageUrl}" alt="${member.name}" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-xl object-cover">
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-6 pt-24 md:pt-8 mt-4">
+                    <!-- Header Section -->
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-8">
+                        <div class="md:ml-48 text-center md:text-left">
+                            <h1 class="text-4xl font-bold text-gray-800">${member.name}</h1>
+                            <p class="${getRoleColor(member.role)} font-semibold text-xl mt-1">${member.role}</p>
+                            <p class="text-gray-500 mt-1">
+                                <i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i>
+                                Member since ${new Date(member.details.joiningDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+                            </p>
+                        </div>
+                        <div class="flex space-x-3 mt-6 md:mt-0 mx-auto md:mx-0">
+                            ${generateSocialLinks(member.social)}
+                        </div>
+                    </div>
+
+                    <!-- Main Content Grid -->
+                    <div class="profile-grid">
+                        <!-- Sidebar -->
+                        <aside>
+                            <div class="bg-gray-50 rounded-xl p-6 sticky top-24">
+                                <h3 class="font-bold text-lg text-gray-700 mb-4">
+                                    <i data-lucide="user" class="w-5 h-5 inline mr-2"></i>
+                                    Membership Details
+                                </h3>
+                                <div class="space-y-3 text-gray-600">
+                                    <div class="flex items-center">
+                                        <i data-lucide="hash" class="w-4 h-4 mr-3 text-gray-400 flex-shrink-0"></i>
+                                        <span class="text-sm">
+                                            <span class="text-gray-500">ID:</span>
+                                            <span class="font-semibold ml-1">${member.id}</span>
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i data-lucide="shield" class="w-4 h-4 mr-3 text-gray-400 flex-shrink-0"></i>
+                                        <span class="text-sm">
+                                            <span class="text-gray-500">Status:</span>
+                                            <span class="status-badge active ml-2">${member.details.membershipStatus}</span>
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i data-lucide="award" class="w-4 h-4 mr-3 text-gray-400 flex-shrink-0"></i>
+                                        <span class="text-sm">
+                                            <span class="text-gray-500">Type:</span>
+                                            <span class="font-semibold ml-1">${member.details.membershipType}</span>
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i data-lucide="users" class="w-4 h-4 mr-3 text-gray-400 flex-shrink-0"></i>
+                                        <span class="text-sm">
+                                            <span class="text-gray-500">Club:</span>
+                                            <span class="font-semibold ml-1">${member.details.club}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Quick Actions -->
+                                <div class="mt-6 pt-6 border-t border-gray-200">
+                                    <h4 class="font-semibold text-gray-700 mb-3">Quick Actions</h4>
+                                    <div class="space-y-2">
+                                        <button onclick="sendMessage('${member.name}')" class="w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                                            <i data-lucide="mail" class="w-4 h-4 inline mr-2"></i>
+                                            Send Message
+                                        </button>
+                                        <button onclick="shareProfile('${member.name}', '${member.id}')" class="w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                                            <i data-lucide="share-2" class="w-4 h-4 inline mr-2"></i>
+                                            Share Profile
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+
+                        <!-- Main Content -->
+                        <main>
+                            <div class="space-y-8">
+                                <!-- About Section -->
+                                <section>
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                                        <i data-lucide="info" class="w-6 h-6 inline mr-2 text-blue-600"></i>
+                                        About Me
+                                    </h3>
+                                    <div class="bg-gray-50 rounded-xl p-6">
+                                        <p class="text-gray-700 whitespace-pre-line leading-relaxed">${member.bio}</p>
+                                    </div>
+                                </section>
+
+                                <!-- Skills Section -->
+                                <section>
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                                        <i data-lucide="zap" class="w-6 h-6 inline mr-2 text-yellow-600"></i>
+                                        Skills & Expertise
+                                    </h3>
+                                    <div class="bg-white border border-gray-200 rounded-xl p-6">
+                                        <div class="flex flex-wrap gap-3">
+                                            ${member.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- Projects Section -->
+                                <section>
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                                        <i data-lucide="folder" class="w-6 h-6 inline mr-2 text-green-600"></i>
+                                        Projects & Contributions
+                                    </h3>
+                                    <div class="space-y-4">
+                                        ${member.projects.map(project => `
+                                            <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
+                                                <h4 class="font-bold text-lg text-gray-800 mb-2">${project.name}</h4>
+                                                <p class="text-gray-600 leading-relaxed">${project.description}</p>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </section>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            `;
+
+            // Re-initialize lucide icons for new content
+            lucide.createIcons();
+        }
+
+        function showError(message) {
+            // Hide loading state
+            document.getElementById('loading-state').classList.add('hidden');
+            
+            // Show error state
+            const errorState = document.getElementById('error-state');
+            errorState.classList.remove('hidden');
+            
+            // Set error message
+            document.getElementById('error-message').textContent = message;
+            
+            // Re-initialize lucide icons
+            lucide.createIcons();
+        }
+
+        function showNetworkError(message) {
+            // Hide loading state
+            document.getElementById('loading-state').classList.add('hidden');
+            
+            // Show network error state
+            const networkErrorState = document.getElementById('network-error-state');
+            networkErrorState.classList.remove('hidden');
+            
+            // Re-initialize lucide icons
+            lucide.createIcons();
+        }
+
+        function getRoleColor(role) {
+            const colorMap = {
+                'Lead Organizer': 'text-blue-600',
+                'Web Lead': 'text-red-600', 
+                'Android Lead': 'text-yellow-600',
+                'Cloud & AI Lead': 'text-green-600'
+            };
+            return colorMap[role] || 'text-gray-600';
+        }
+
+        function generateSocialLinks(social) {
+            let links = '';
+            if (social.linkedin) {
+                links += `<a href="${social.linkedin}" target="_blank" class="bg-white p-3 rounded-full shadow-md hover:shadow-lg transition-shadow text-blue-700 hover:bg-blue-50">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>`;
+            }
+            if (social.twitter) {
+                links += `<a href="${social.twitter}" target="_blank" class="bg-white p-3 rounded-full shadow-md hover:shadow-lg transition-shadow text-sky-500 hover:bg-sky-50">
+                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                </a>`;
+            }
+            if (social.github) {
+                links += `<a href="${social.github}" target="_blank" class="bg-white p-3 rounded-full shadow-md hover:shadow-lg transition-shadow text-gray-800 hover:bg-gray-50">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                </a>`;
+            }
+            return links;
+        }
+
+        // Interactive Functions
+        function sendMessage(memberName) {
+            alert(`Feature coming soon! You would send a message to ${memberName}.`);
+        }
+
+        function shareProfile(memberName, memberId) {
+            if (navigator.share) {
+                navigator.share({
+                    title: `${memberName} - GDG Wah Campus`,
+                    text: `Check out ${memberName}'s profile at GDG Wah Campus!`,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback: copy to clipboard
+                const url = window.location.href;
+                navigator.clipboard.writeText(url).then(() => {
+                    alert(`Profile link copied to clipboard!\n${url}`);
+                }).catch(() => {
+                    alert(`Share this profile: ${url}`);
+                });
+            }
+        }
+
+        // Handle browser back/forward navigation
+        window.addEventListener('popstate', () => {
+            // Could implement navigation handling here if needed
+        });
+    </script>
+</body>
+</html>

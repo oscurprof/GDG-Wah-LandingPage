@@ -1,0 +1,140 @@
+{
+  "members": [
+    {
+      "id": "GDG-M001",
+      "name": "Ayesha Khan",
+      "role": "Lead Organizer",
+      "bio": "Passionate about building tech communities and empowering students to explore Google technologies. With over 3 years of experience in organizing tech events, I love connecting developers and fostering innovation.\n\nI believe in the power of community-driven learning and have helped organize over 20+ workshops and hackathons. When I'm not organizing events, you can find me exploring new web technologies or mentoring fellow developers.",
+      "imageUrl": "https://placehold.co/200x200/C4D7FE/4285F4?text=AK",
+      "coverImageUrl": "https://placehold.co/800x300/E8F0FE/4285F4?text=Cover",
+      "skills": ["Event Management", "Community Building", "Public Speaking", "JavaScript", "React", "Node.js", "Leadership"],
+      "social": {
+        "linkedin": "https://linkedin.com/in/ayesha-khan",
+        "twitter": "https://twitter.com/ayesha_gdg",
+        "github": "https://github.com/ayeshakhan"
+      },
+      "details": {
+        "joiningDate": "2023-01-15",
+        "membershipStatus": "Active",
+        "membershipType": "Organizer",
+        "club": "GDG Wah Campus"
+      },
+      "projects": [
+        {
+          "name": "GDG Community Platform",
+          "description": "Developed a web platform to manage GDG events, member registrations, and community interactions. Built with React and Firebase."
+        },
+        {
+          "name": "Tech Mentorship Program",
+          "description": "Launched a mentorship initiative connecting senior developers with newcomers, resulting in 50+ successful mentorship pairs."
+        },
+        {
+          "name": "Women in Tech Workshop Series",
+          "description": "Organized quarterly workshops focused on encouraging women participation in technology fields."
+        }
+      ]
+    },
+    {
+      "id": "GDG-M002",
+      "name": "Bilal Ahmed",
+      "role": "Web Lead",
+      "bio": "Full-stack web developer with expertise in modern web technologies. I'm passionate about creating beautiful, functional websites and teaching others the art of web development.\n\nI specialize in React, Node.js, and cloud technologies. I've been coding for over 4 years and love sharing knowledge through workshops and code reviews.",
+      "imageUrl": "https://placehold.co/200x200/F8DDC4/DB4437?text=BA",
+      "coverImageUrl": "https://placehold.co/800x300/FDEDED/DB4437?text=Cover",
+      "skills": ["HTML/CSS", "JavaScript", "React", "Node.js", "MongoDB", "Express.js", "Git", "Responsive Design"],
+      "social": {
+        "linkedin": "https://linkedin.com/in/bilal-ahmed",
+        "github": "https://github.com/bilalahmed",
+        "twitter": "https://twitter.com/bilal_dev"
+      },
+      "details": {
+        "joiningDate": "2023-03-20",
+        "membershipStatus": "Active",
+        "membershipType": "Lead",
+        "club": "GDG Wah Campus"
+      },
+      "projects": [
+        {
+          "name": "E-Commerce Platform",
+          "description": "Built a full-featured e-commerce platform with payment integration, user authentication, and admin dashboard using MERN stack."
+        },
+        {
+          "name": "GDG Website Redesign",
+          "description": "Led the complete redesign of the GDG Wah Campus website, improving user experience and mobile responsiveness."
+        },
+        {
+          "name": "Web Development Bootcamp",
+          "description": "Conducted intensive 6-week web development bootcamp for 30+ students covering HTML, CSS, JavaScript, and React."
+        }
+      ]
+    },
+    {
+      "id": "GDG-M003",
+      "name": "Fatima Ali",
+      "role": "Android Lead",
+      "bio": "Android developer passionate about creating innovative mobile applications. I love exploring the latest Android development trends and sharing knowledge with the community.\n\nWith 3+ years of Android development experience, I've built several apps that have helped local businesses digitize their operations.",
+      "imageUrl": "https://placehold.co/200x200/FDEBC4/F4B400?text=FA",
+      "coverImageUrl": "https://placehold.co/800x300/FEF7E0/F4B400?text=Cover",
+      "skills": ["Kotlin", "Java", "Android SDK", "Firebase", "Room Database", "Retrofit", "Material Design", "MVP/MVVM"],
+      "social": {
+        "linkedin": "https://linkedin.com/in/fatima-ali",
+        "github": "https://github.com/fatimaali",
+        "twitter": "https://twitter.com/fatima_android"
+      },
+      "details": {
+        "joiningDate": "2023-02-10",
+        "membershipStatus": "Active",
+        "membershipType": "Lead",
+        "club": "GDG Wah Campus"
+      },
+      "projects": [
+        {
+          "name": "Campus Navigator App",
+          "description": "Developed an Android app to help new students navigate the campus, find classrooms, and connect with peers."
+        },
+        {
+          "name": "Local Business Directory",
+          "description": "Created a comprehensive business directory app for local Wah businesses with ratings, reviews, and contact features."
+        },
+        {
+          "name": "Android Study Group",
+          "description": "Organized weekly Android development study sessions, helping 25+ students learn mobile development."
+        }
+      ]
+    },
+    {
+      "id": "GDG-M004",
+      "name": "Saad Malik",
+      "role": "Cloud & AI Lead",
+      "bio": "Cloud architect and AI enthusiast with deep expertise in Google Cloud Platform and machine learning. I'm passionate about helping developers leverage cloud technologies to build scalable applications.\n\nI hold multiple Google Cloud certifications and enjoy exploring the intersection of AI and cloud computing.",
+      "imageUrl": "https://placehold.co/200x200/C4E8D8/0F9D58?text=SM",
+      "coverImageUrl": "https://placehold.co/800x300/E6F4EA/0F9D58?text=Cover",
+      "skills": ["Google Cloud Platform", "AWS", "Python", "TensorFlow", "Machine Learning", "Docker", "Kubernetes", "Data Analytics"],
+      "social": {
+        "linkedin": "https://linkedin.com/in/saad-malik",
+        "github": "https://github.com/saadmalik",
+        "twitter": "https://twitter.com/saad_cloud"
+      },
+      "details": {
+        "joiningDate": "2023-04-05",
+        "membershipStatus": "Active",
+        "membershipType": "Lead",
+        "club": "GDG Wah Campus"
+      },
+      "projects": [
+        {
+          "name": "Smart Campus IoT System",
+          "description": "Designed and implemented an IoT-based system for monitoring campus facilities using Google Cloud IoT Core and AI analytics."
+        },
+        {
+          "name": "ML-Powered Study Assistant",
+          "description": "Built an AI chatbot using Google's Dialogflow to help students with academic queries and course recommendations."
+        },
+        {
+          "name": "Cloud Migration Workshop Series",
+          "description": "Conducted hands-on workshops teaching students how to deploy applications on Google Cloud Platform."
+        }
+      ]
+    }
+  ]
+}
