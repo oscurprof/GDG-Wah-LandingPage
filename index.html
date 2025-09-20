@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDG Wah Campus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-color: #F8F9FA;
+        }
+        .gdg-blue { color: #4285F4; }
+        .gdg-red { color: #DB4437; }
+        .gdg-yellow { color: #F4B400; }
+        .gdg-green { color: #0F9D58; }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- Header -->
+    <header id="header" class="bg-white sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/4285F4/FFFFFF?text=G" alt="GDG Logo" class="rounded-full">
+                <span class="text-xl font-bold text-gray-700">GDG <span class="font-semibold text-gray-500">Wah Campus</span></span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-blue-600">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-blue-600">About</a>
+                <a href="#events" class="text-gray-600 hover:text-blue-600">Events</a>
+                <a href="#team" class="text-gray-600 hover:text-blue-600">Team</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600">Contact</a>
+            </div>
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="#" class="text-gray-500 hover:text-blue-600"><i data-lucide="twitter"></i></a>
+                <a href="#" class="text-gray-500 hover:text-blue-600"><i data-lucide="linkedin"></i></a>
+                <a href="#" class="text-gray-500 hover:text-blue-600"><i data-lucide="instagram"></i></a>
+            </div>
+            <button id="mobile-menu-button" class="lg:hidden text-gray-600 focus:outline-none">
+                <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4">
+            <a href="#home" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
+            <a href="#about" class="block py-2 text-gray-600 hover:text-blue-600">About</a>
+            <a href="#events" class="block py-2 text-gray-600 hover:text-blue-600">Events</a>
+            <a href="#team" class="block py-2 text-gray-600 hover:text-blue-600">Team</a>
+            <a href="#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-bg py-20 lg:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight">
+                    Welcome to <span class="gdg-blue">G</span><span class="gdg-red">o</span><span class="gdg-yellow">o</span><span class="gdg-green">g</span><span class="gdg-blue">l</span><span class="gdg-red">e</span> Developer Group
+                </h1>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-600 mt-2">Wah Campus</h2>
+                <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
+                    A community of student developers passionate about Google technologies. Learn, build, and grow with us!
+                </p>
+                <div class="mt-8">
+                    <a href="#" class="cta-button inline-block bg-blue-600 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:bg-blue-700">
+                        Become a Member
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold">About GDG Wah Campus</h2>
+                    <p class="text-gray-500 mt-2">Connect. Learn. Grow.</p>
+                </div>
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2">
+                         <img src="https://placehold.co/600x400/E8F0FE/4285F4?text=Community+Event" alt="Community Event" class="rounded-lg shadow-xl w-full">
+                    </div>
+                    <div class="lg:w-1/2">
+                        <p class="text-lg text-gray-700 mb-4">
+                            Google Developer Group Wah Campus is an initiative to concentrate the efforts of many developers in and around Wah Cantt towards learning, sharing, and developing with Google technologies.
+                        </p>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Our goal is to create a vibrant local tech community, foster learning, and provide a platform for students to network with peers and industry experts. We organize hands-on workshops, tech talks, and hackathons focusing on a wide range of topics from Android and Web development to Cloud and AI.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-blue-100 p-3 rounded-full"><i data-lucide="code" class="gdg-blue"></i></div>
+                                <div>
+                                    <h3 class="font-semibold text-xl">Workshops</h3>
+                                    <p class="text-gray-600">Hands-on sessions to learn new skills.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-green-100 p-3 rounded-full"><i data-lucide="mic" class="gdg-green"></i></div>
+                                <div>
+                                    <h3 class="font-semibold text-xl">Tech Talks</h3>
+                                    <p class="text-gray-600">Insights from industry experts.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-yellow-100 p-3 rounded-full"><i data-lucide="users" class="gdg-yellow"></i></div>
+                                <div>
+                                    <h3 class="font-semibold text-xl">Networking</h3>
+                                    <p class="text-gray-600">Connect with fellow tech enthusiasts.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-red-100 p-3 rounded-full"><i data-lucide="trophy" class="gdg-red"></i></div>
+                                <div>
+                                    <h3 class="font-semibold text-xl">Hackathons</h3>
+                                    <p class="text-gray-600">Build innovative solutions and compete.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="events" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold">Upcoming Events</h2>
+                    <p class="text-gray-500 mt-2">Join us for our next event!</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Event Card 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/400x250/F4B400/FFFFFF?text=Android+Workshop" alt="Event banner" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm font-semibold text-blue-600">OCT 15, 2025</span>
+                            <h3 class="text-xl font-bold mt-2 mb-2">Android Development with Kotlin</h3>
+                            <p class="text-gray-600 mb-4">A hands-on workshop covering the basics of building modern Android apps with Kotlin.</p>
+                            <a href="#" class="font-semibold text-blue-600 hover:underline">Register Now &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Event Card 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/400x250/0F9D58/FFFFFF?text=Web+Dev+Talk" alt="Event banner" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm font-semibold text-blue-600">NOV 05, 2025</span>
+                            <h3 class="text-xl font-bold mt-2 mb-2">Modern Web Development Trends</h3>
+                            <p class="text-gray-600 mb-4">Explore the latest trends in web development including frameworks, and tooling.</p>
+                            <a href="#" class="font-semibold text-blue-600 hover:underline">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Event Card 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/400x250/DB4437/FFFFFF?text=Cloud+Study+Jam" alt="Event banner" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm font-semibold text-blue-600">NOV 22, 2025</span>
+                            <h3 class="text-xl font-bold mt-2 mb-2">Google Cloud Study Jam</h3>
+                            <p class="text-gray-600 mb-4">Get hands-on experience with Google Cloud Platform's core services.</p>
+                            <a href="#" class="font-semibold text-blue-600 hover:underline">Register Now &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold">Meet the Team</h2>
+                    <p class="text-gray-500 mt-2">The passionate individuals behind GDG Wah Campus.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Team Member 1 -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/200x200/C4D7FE/4285F4?text=Team+1" class="w-40 h-40 mx-auto rounded-full shadow-lg" alt="Team member photo">
+                        <h3 class="mt-4 text-xl font-bold">Ayesha Khan</h3>
+                        <p class="text-blue-600 font-semibold">Lead Organizer</p>
+                    </div>
+                    <!-- Team Member 2 -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/200x200/F8DDC4/DB4437?text=Team+2" class="w-40 h-40 mx-auto rounded-full shadow-lg" alt="Team member photo">
+                        <h3 class="mt-4 text-xl font-bold">Bilal Ahmed</h3>
+                        <p class="text-red-600 font-semibold">Web Lead</p>
+                    </div>
+                    <!-- Team Member 3 -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/200x200/FDEBC4/F4B400?text=Team+3" class="w-40 h-40 mx-auto rounded-full shadow-lg" alt="Team member photo">
+                        <h3 class="mt-4 text-xl font-bold">Fatima Ali</h3>
+                        <p class="text-yellow-600 font-semibold">Android Lead</p>
+                    </div>
+                    <!-- Team Member 4 -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/200x200/C4E8D8/0F9D58?text=Team+4" class="w-40 h-40 mx-auto rounded-full shadow-lg" alt="Team member photo">
+                        <h3 class="mt-4 text-xl font-bold">Saad Malik</h3>
+                        <p class="text-green-600 font-semibold">Cloud & AI Lead</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section id="sponsors" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold">Our Partners</h2>
+                    <p class="text-gray-500 mt-2">A huge thanks to our supporters.</p>
+                </div>
+                <div class="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
+                    <img src="https://placehold.co/150x60/CCCCCC/999999?text=Google" alt="Google Logo" class="h-12">
+                    <img src="https://placehold.co/150x60/CCCCCC/999999?text=University" alt="University Logo" class="h-12">
+                    <img src="https://placehold.co/150x60/CCCCCC/999999?text=Sponsor+1" alt="Sponsor 1 Logo" class="h-12">
+                    <img src="https://placehold.co/150x60/CCCCCC/999999?text=Sponsor+2" alt="Sponsor 2 Logo" class="h-12">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">GDG Wah Campus</h3>
+                    <p class="text-gray-400">Building the future of tech in Wah, together.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="github" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#events" class="text-gray-400 hover:text-white">Events</a></li>
+                        <li><a href="https://gdg.community.dev/" target="_blank" class="text-gray-400 hover:text-white">Become a Member</a></li>
+                        <li><a href="https://developers.google.com/" target="_blank" class="text-gray-400 hover:text-white">Google for Developers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <p class="text-gray-400">Have questions or want to collaborate? <br> Reach out to us!</p>
+                    <a href="mailto:gdg.wahcampus@example.com" class="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Email Us</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 GDG Wah Campus. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Hide mobile menu on click
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
