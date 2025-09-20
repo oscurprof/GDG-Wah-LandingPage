@@ -1,0 +1,73 @@
+/* Base styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Header active link styling */
+.nav-links a.active {
+    color: #4285F4; /* GDG Blue */
+    font-weight: 700;
+}
+
+
+/* Backgrounds and Colors */
+.hero-bg {
+    background-color: #F8F9FA;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(66, 133, 244, 0.05), transparent 30%),
+        radial-gradient(circle at 85% 30%, rgba(219, 68, 55, 0.05), transparent 30%),
+        radial-gradient(circle at 60% 80%, rgba(15, 157, 88, 0.05), transparent 30%);
+}
+
+.gdg-blue { color: #4285F4; }
+.gdg-red { color: #DB4437; }
+.gdg-yellow { color: #F4B400; }
+.gdg-green { color: #0F9D58; }
+
+
+/* Call to Action Button */
+.cta-button {
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 25px rgba(66, 133, 244, 0.3);
+}
+
+/* Section specific enhancements */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Team Member hover effect */
+.team-member img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Event card hover effect */
+.event-card {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.event-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
