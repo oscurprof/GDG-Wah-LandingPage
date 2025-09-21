@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Members | GDG Wah Campus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- Header (same as other pages) -->
+    <header id="header" class="bg-white sticky top-0 z-50 shadow-md transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/4285F4/FFFFFF?text=G" alt="GDG Logo" class="rounded-full">
+                <span class="text-xl font-bold text-gray-700">GDG <span class="font-semibold text-gray-500">Wah Campus</span></span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 nav-links">
+                <a href="index.html#home" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
+                <a href="index.html#about" class="text-gray-600 hover:text-blue-600 font-medium">About</a>
+                <a href="index.html#events" class="text-gray-600 hover:text-blue-600 font-medium">Events</a>
+                <a href="index.html#team" class="text-gray-600 hover:text-blue-600 font-medium">Team</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-blue-600 font-medium">Contact</a>
+            </div>
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="#" class="text-gray-500 hover:text-blue-600" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                <a href="#" class="text-gray-500 hover:text-blue-600" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                <a href="#" class="text-gray-500 hover:text-blue-600" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            </div>
+            <button id="mobile-menu-button" class="lg:hidden text-gray-600 focus:outline-none">
+                <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4">
+            <a href="index.html#home" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
+            <a href="index.html#about" class="block py-2 text-gray-600 hover:text-blue-600">About</a>
+            <a href="index.html#events" class="block py-2 text-gray-600 hover:text-blue-600">Events</a>
+            <a href="index.html#team" class="block py-2 text-gray-600 hover:text-blue-600">Team</a>
+            <a href="index.html#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Members Directory Section -->
+        <section id="members-directory" class="py-20 hero-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl font-bold text-gray-800">GDG Wah Campus Members</h1>
+                    <p class="text-gray-500 mt-2 text-lg">Our amazing community of tech enthusiasts</p>
+                </div>
+
+                <!-- Filter controls -->
+                <div class="mb-12 max-w-xl mx-auto">
+                    <div class="relative">
+                        <input 
+                            id="search-input" 
+                            type="text" 
+                            placeholder="Search members..." 
+                            class="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        >
+                        <div class="absolute right-3 top-3 text-gray-400">
+                            <i data-lucide="search" class="h-5 w-5"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mt-4 justify-center">
+                        <button data-filter="all" class="filter-btn bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">All</button>
+                        <button data-filter="Core Team" class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium">Core Team</button>
+                        <button data-filter="Organizer" class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium">Organizers</button>
+                        <button data-filter="Regular" class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium">Regular Members</button>
+                    </div>
+                </div>
+
+                <!-- Loading indicator -->
+                <div id="loading-message" class="text-center py-16">
+                    <div class="animate-spin mx-auto mb-4 h-10 w-10 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+                    <p class="text-lg text-gray-600">Loading members...</p>
+                </div>
+
+                <!-- Members grid -->
+                <div id="members-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Members will be populated here via JavaScript -->
+                </div>
+
+                <!-- No results message -->
+                <div id="no-results" class="hidden text-center py-16">
+                    <p class="text-lg text-gray-600">No members found matching your search.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same as other pages) -->
+    <footer id="contact" class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">GDG Wah Campus</h3>
+                    <p class="text-gray-400">Building the future of tech in Wah, together.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="Twitter"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="index.html#events" class="text-gray-400 hover:text-white transition-colors">Events</a></li>
+                        <li><a href="https://gdg.community.dev/" target="_blank" class="text-gray-400 hover:text-white transition-colors">Become a Member</a></li>
+                        <li><a href="https://developers.google.com/" target="_blank" class="text-gray-400 hover:text-white transition-colors">Google for Developers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <p class="text-gray-400">Have questions or want to collaborate? <br> Reach out to us!</p>
+                    <a href="mailto:gdg.wahcampus@example.com" class="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors">Email Us</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 GDG Wah Campus. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/members.js"></script>
+</body>
+</html>
