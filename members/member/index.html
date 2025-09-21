@@ -226,7 +226,46 @@
         </div>
     </footer>
 
-    <script src="/js/members.js"></script>
+    <script src="../../js/members.js"></script>
+    <script>
+        (function() {
+        if (!window.membersData) return;
+        const params = new URLSearchParams(location.search);
+        const id = params.get('id');
+        const notFound = document.getElementById('not-found');
+        const profile = document.getElementById('profile-content');
+
+        if (!id || !membersData[id]) {
+            notFound.classList.remove('hidden');
+            return;
+        }
+
+        const m = membersData[id];
+        notFound.classList.add('hidden');
+        profile.classList.remove('hidden');
+
+        document.getElementById('member-image').src = m.imageUrl;
+        document.getElementById('member-name').textContent = m.name;
+        document.getElementById('member-role').textContent = m.role;
+        document.getElementById('member-team').textContent = m.team;
+
+        // Bio
+        document.getElementById('member-bio').innerHTML = m.bio;
+
+        // Social links
+        const socialWrap = document.getElementById('social-links');
+        socialWrap.innerHTML = (m.socials || []).map(s => `
+            <a href="${s.url}" target="_blank" rel="noopener" class="text-gray-500 hover:text-blue-600">
+            <i data-lucide="${s.type}"></i>
+            </a>
+        `).join('');
+
+        // (Re)initialize icons if using Lucide
+        if (window.lucide && lucide.createIcons) {
+            lucide.createIcons();
+        }
+        })();
+    </script>
     <script>
         lucide.createIcons();
 
