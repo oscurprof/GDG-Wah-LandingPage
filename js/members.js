@@ -2,11 +2,11 @@
 
 const membersData = {
     "GDG-M001": {
-        name: "Ayesha Khan",
-        role: "Lead Organizer",
+        name: "Dr. Kashif Ayub",
+        role: "Faculty Lead",
         team: "Executives",
-        imageUrl: "https://placehold.co/256x256/4285F4/FFFFFF?text=Ayesha",
-        bio: "<p>A passionate community builder and tech enthusiast, Ayesha leads GDG Wah Campus with a vision to create a thriving ecosystem for developers. She is dedicated to fostering an inclusive environment where everyone can learn, share, and grow.</p><p>Her interests lie in project management and exploring how technology can be used to solve real-world problems. She believes in the power of collaboration and is always looking for ways to bring people together around shared interests in technology.</p><p>When she's not organizing events or mentoring community members, Ayesha enjoys reading about emerging technologies and their potential impact on society.</p>",
+        imageUrl: "https://placehold.co/256x256/4285F4/FFFFFF?text=Kashif",
+        bio: "<p>A passionate community builder and tech enthusiast, Dr Kashif leads GDG Wah Campus with a vision to create a thriving ecosystem for developers. He is dedicated to fostering an inclusive environment where everyone can learn, share, and grow.</p><p>Her interests lie in project management and exploring how technology can be used to solve real-world problems. She believes in the power of collaboration and is always looking for ways to bring people together around shared interests in technology.</p><p>When she's not organizing events or mentoring community members, Ayesha enjoys reading about emerging technologies and their potential impact on society.</p>",
         socials: [
             { type: "linkedin", url: "#" },
             { type: "github", url: "#" },
@@ -14,11 +14,11 @@ const membersData = {
         ]
     },
     "GDG-M002": {
-        name: "Bilal Ahmed",
-        role: "Co-Lead",
+        name: "Ubaid ur Rehman",
+        role: "Campus Lead",
         team: "Executives",
-        imageUrl: "https://placehold.co/256x256/DB4437/FFFFFF?text=Bilal",
-        bio: "<p>Bilal is a seasoned developer with a knack for leadership. As Co-Lead, he supports the community's technical direction and helps organize hands-on workshops. He is always eager to dive into new technologies and share his findings with the community.</p><p>With years of experience in software development, Bilal brings a practical perspective to technical discussions and mentoring sessions. He specializes in backend development and cloud technologies, making him a valuable resource for community members working on various projects.</p><p>Bilal is passionate about open source contribution and encourages community members to participate in meaningful projects that can make a difference.</p>",
+        imageUrl: "/assets/images/M002.png",
+        bio: "<p>Ubaid is a seasoned developer with a knack for leadership. As Campus-Lead, he supports the community's technical direction and helps organize hands-on workshops. He is always eager to dive into new technologies and share his findings with the community.</p><p>With years of experience in software development, Ubaid brings a practical perspective to technical discussions and mentoring sessions. He specializes in backend development and cloud technologies, making him a valuable resource for community members working on various projects.</p><p>Bilal is passionate about open source contribution and encourages community members to participate in meaningful projects that can make a difference.</p>",
         socials: [
             { type: "linkedin", url: "#" },
             { type: "github", url: "#" }
@@ -104,7 +104,7 @@ const membersData = {
         name: "Imran Khan",
         role: "Event Lead",
         team: "Event & Decor",
-        imageUrl: "https://placehold.co/256x256/0F9D58/FFFFFF?text=Imran",
+        imageUrl: "/assets/images/imran-khan.jpg",
         bio: "<p>Imran is the master of logistics and planning. He ensures that all our events run smoothly, from securing venues to coordinating with speakers. His attention to detail makes every GDG event a memorable experience.</p><p>With extensive experience in project management and event coordination, Imran has successfully organized numerous tech events, workshops, and hackathons. He's skilled in budget management, vendor coordination, and timeline planning.</p><p>Imran takes pride in creating seamless experiences for attendees and believes that well-organized events are crucial for effective learning and networking opportunities.</p>",
         socials: [
             { type: "linkedin", url: "#" }
