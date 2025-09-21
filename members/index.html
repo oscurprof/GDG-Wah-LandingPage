@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | GDG Wah Campus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Styles inspired by your portfolio for expandable sections */
+        .team-category-header {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 0;
+        }
+        
+        .team-category-header:hover h2 {
+            color: #4285F4; /* GDG Blue */
+        }
+        
+        .team-category-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.22, 1, 0.36, 1); /* Smooth ease-out */
+            border-left: 2px solid #e5e7eb; /* Gray-200 */
+            padding-left: 2rem;
+            margin-left: 0.75rem; /* Align with icon center */
+        }
+        
+        .team-category-content.expanded {
+            max-height: 5000px; /* Large enough to not clip content */
+        }
+        
+        .category-icon {
+            transition: transform 0.4s ease;
+        }
+        
+        .category-expanded .category-icon {
+            transform: rotate(90deg);
+        }
+
+        /* Member card styling */
+        .member-card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+        .member-card img {
+            transition: transform 0.3s ease;
+        }
+        .member-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Header -->
+    <header id="header" class="bg-white sticky top-0 z-50 shadow-md transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/4285F4/FFFFFF?text=G" alt="GDG Logo" class="rounded-full">
+                <span class="text-xl font-bold text-gray-700">GDG <span class="font-semibold text-gray-500">Wah Campus</span></span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 nav-links">
+                <a href="/" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
+                <a href="/members" class="text-gray-600 hover:text-blue-600 font-medium text-blue-600">Team</a>
+                <a href="/#events" class="text-gray-600 hover:text-blue-600 font-medium">Events</a>
+                <a href="/#contact" class="text-gray-600 hover:text-blue-600 font-medium">Contact</a>
+            </div>
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="#" class="text-gray-500 hover:text-blue-600" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                <a href="#" class="text-gray-500 hover:text-blue-600" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                <a href="#" class="text-gray-500 hover:text-blue-600" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            </div>
+            <button id="mobile-menu-button" class="lg:hidden text-gray-600 focus:outline-none">
+                <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4">
+             <a href="/" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
+             <a href="/members" class="block py-2 text-blue-600">Team</a>
+             <a href="/#events" class="block py-2 text-gray-600 hover:text-blue-600">Events</a>
+             <a href="/#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="hero-bg pt-24 pb-16">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800">Meet Our Team</h1>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                    The passionate individuals driving our community forward. We are a collective of students, developers, and designers dedicated to learning and sharing knowledge.
+                </p>
+            </div>
+        </section>
+
+        <!-- Teams Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-6 max-w-6xl">
+
+                <!-- Executives Team -->
+                <div class="team-category-container mb-12">
+                    <div class="team-category-header category-expanded">
+                        <i data-lucide="chevron-right" class="category-icon text-blue-500"></i>
+                        <h2 class="text-3xl font-bold text-gray-800">Executives</h2>
+                    </div>
+                    <div class="team-category-content expanded">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-8">
+                            <div class="member-card" data-member-id="GDG-M001">
+                                <img src="https://placehold.co/128x128/4285F4/FFFFFF?text=Lead" class="w-32 h-32 mx-auto rounded-full shadow-lg" alt="Ayesha Khan">
+                                <h3 class="mt-5 text-xl font-bold text-gray-800">Ayesha Khan</h3>
+                                <p class="mt-1 text-blue-600 font-semibold">Lead Organizer</p>
+                            </div>
+                            <div class="member-card" data-member-id="GDG-M002">
+                                <img src="https://placehold.co/128x128/DB4437/FFFFFF?text=Co-Lead" class="w-32 h-32 mx-auto rounded-full shadow-lg" alt="Bilal Ahmed">
+                                <h3 class="mt-5 text-xl font-bold text-gray-800">Bilal Ahmed</h3>
+                                <p class="mt-1 text-red-600 font-semibold">Co-Lead</p>
+                            </div>
+                            <div class="member-card" data-member-id="GDG-M003">
+                                <img src="https://placehold.co/128x128/F4B400/FFFFFF?text=Manager" class="w-32 h-32 mx-auto rounded-full shadow-lg" alt="Fatima Ali">
+                                <h3 class="mt-5 text-xl font-bold text-gray-800">Fatima Ali</h3>
+                                <p class="mt-1 text-yellow-600 font-semibold">Community Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI & DS Team -->
+                <div class="team-category-container mb-12">
+                    <div class="team-category-header category-expanded">
+                        <i data-lucide="chevron-right" class="category-icon text-green-500"></i>
+                        <h2 class="text-3xl font-bold text-gray-800">AI & DS Team</h2>
+                    </div>
+                    <div class="team-category-content expanded">
+                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-8">
+                            <div class="member-card" data-member-id="GDG-M004">
+                                <img src="https://placehold.co/128x128/0F9D58/FFFFFF?text=AI" class="w-32 h-32 mx-auto rounded-full shadow-lg" alt="Saad Malik">
+                                <h3 class="mt-5 text-xl font-bold text-gray-800">Saad Malik</h3>
+                                <p class="mt-1 text-green-600 font-semibold">AI Lead</p>
+                            </div>
+                            <div class="member-card" data-member-id="GDG-M005">
+                                <img src="https://placehold.co/128x128/0F9D58/FFFFFF?text=DS" class="w-32 h-32 mx-auto rounded-full shadow-lg" alt="Hina Tariq">
+                                <h3 class="mt-5 text-xl font-bold text-gray-800">Hina Tariq</h3>
+                                <p class="mt-1 text-green-600 font-semibold">Data Science Core</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Web and App Team -->
+                <div class="team-category-container mb-12">
+                    <div class="team-category-header category-expanded">
+                        <i data-lucide="chevron-right" class="category-icon text-red-500"></i>
+                        <h2 class="text-3xl font-bold text-gray-800">Web and App Team</h2>
+                    </div>
+                    <div class="team-category-content expanded">
+                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-8">
+                           <div class="member-card" data-member-id="GDG-M006">
+                                <img src="https://placehold.co/128x128/DB4437/FFFFFF?text=Web" class="w-32 h-32 mx-auto rounded-full shadow-lg" alt="Usman Cheema">
+                                <h3 class="mt-5 text-xl font-bold text-gray-800">Usman Cheema</h3>
+                                <p class="mt-1 text-red-600 font-semibold">Web Lead</p>
+                            </div>
+                            <div class="member-card" data-member-id="GDG-M007">
+                                <img src="https://placehold.co/128x128/DB4437/FFFFFF?text=App" class="w-32 h-32 mx-auto rounded-full shadow-lg" alt="Zara Iqbal">
+                                <h3 class="mt-5 text-xl font-bold text-gray-800">Zara Iqbal</h3>
+                                <p class="mt-1 text-red-600 font-semibold">App Lead</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media and Marketing Team -->
+                <div class="team-category-container mb-12">
+                    <div class="team-category-header category-expanded">
+                         <i data-lucide="chevron-right" class="category-icon text-yellow-500"></i>
+                        <h2 class="text-3xl font-bold text-gray-800">Social Media & Marketing</h2>
+                    </div>
+                    <div class="team-category-content expanded">
+                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-8">
+                             <div class="member-card" data-member-id="GDG-M008">
+                                <img src="https://placehold.co/128x128/F4B400/FFFFFF?text=Social" class="w-32 h-32 mx-auto rounded-full shadow-lg" alt="Ali Raza">
+                                <h3 class="mt-5 text-xl font-bold text-gray-800">Ali Raza</h3>
+                                <p class="mt-1 text-yellow-600 font-semibold">Marketing Lead</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Media and Graphics Team -->
+                 <div class="team-category-container mb-12">
+                    <div class="team-category-header category-expanded">
+                        <i data-lucide="chevron-right" class="category-icon text-blue-500"></i>
+                        <h2 class="text-3xl font-bold text-gray-800">Media & Graphics Team</h2>
+                    </div>
+                    <div class="team-category-content expanded">
+                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-8">
+                            <div class="member-card" data-member-id="GDG-M009">
+                                <img src="https://placehold.co/128x128/4285F4/FFFFFF?text=Design" class="w-32 h-32 mx-auto rounded-full shadow-lg" alt="Sana Javed">
+                                <h3 class="mt-5 text-xl font-bold text-gray-800">Sana Javed</h3>
+                                <p class="mt-1 text-blue-600 font-semibold">Graphics Lead</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event and Decor Team -->
+                <div class="team-category-container mb-12">
+                    <div class="team-category-header category-expanded">
+                        <i data-lucide="chevron-right" class="category-icon text-green-500"></i>
+                        <h2 class="text-3xl font-bold text-gray-800">Event & Decor Team</h2>
+                    </div>
+                    <div class="team-category-content expanded">
+                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-8">
+                             <div class="member-card" data-member-id="GDG-M010">
+                                <img src="https://placehold.co/128x128/0F9D58/FFFFFF?text=Event" class="w-32 h-32 mx-auto rounded-full shadow-lg" alt="Imran Khan">
+                                <h3 class="mt-5 text-xl font-bold text-gray-800">Imran Khan</h3>
+                                <p class="mt-1 text-green-600 font-semibold">Event Lead</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 GDG Wah Campus. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../js/members.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Category toggle functionality
+        document.querySelectorAll('.team-category-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                header.classList.toggle('category-expanded');
+                content.classList.toggle('expanded');
+            });
+        });
+
+        // Member card click handler - redirect to individual member page
+        document.querySelectorAll('.member-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const memberId = card.dataset.memberId;
+                // Navigate to individual member page
+                window.location.href = `/members/member?id=${memberId}`;
+            });
+        });
+    </script>
+</body>
+</html>
