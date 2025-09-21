@@ -6,7 +6,7 @@
     <title>GDG Wah Campus | Google Developer Group</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-white text-gray-800 antialiased">
@@ -158,38 +158,15 @@
             </div>
         </section>
 
-        <!-- Team Section -->
+        <!-- Leadership Team Section -->
         <section id="team" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-800">Meet the Team</h2>
-                    <p class="text-gray-500 mt-2 text-lg">The passionate individuals behind GDG Wah Campus.</p>
+                    <h2 class="text-4xl font-bold text-gray-800">Meet Our Leadership</h2>
+                    <p class="text-gray-500 mt-2 text-lg">The passionate individuals driving GDG Wah Campus forward.</p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                    <!-- Team Member 1 -->
-                    <div class="team-member text-center p-4">
-                        <img src="https://placehold.co/200x200/C4D7FE/4285F4?text=Team+1" class="w-40 h-40 mx-auto rounded-full shadow-lg" alt="Team member photo">
-                        <h3 class="mt-4 text-xl font-bold">Ayesha Khan</h3>
-                        <p class="text-blue-600 font-semibold">Lead Organizer</p>
-                    </div>
-                    <!-- Team Member 2 -->
-                    <div class="team-member text-center p-4">
-                        <img src="https://placehold.co/200x200/F8DDC4/DB4437?text=Team+2" class="w-40 h-40 mx-auto rounded-full shadow-lg" alt="Team member photo">
-                        <h3 class="mt-4 text-xl font-bold">Bilal Ahmed</h3>
-                        <p class="text-red-600 font-semibold">Co-Lead</p>
-                    </div>
-                    <!-- Team Member 3 -->
-                    <div class="team-member text-center p-4">
-                        <img src="https://placehold.co/200x200/FDEBC4/F4B400?text=Team+3" class="w-40 h-40 mx-auto rounded-full shadow-lg" alt="Team member photo">
-                        <h3 class="mt-4 text-xl font-bold">Fatima Ali</h3>
-                        <p class="text-yellow-600 font-semibold">Community Manager</p>
-                    </div>
-                    <!-- Team Member 4 -->
-                    <div class="team-member text-center p-4">
-                        <img src="https://placehold.co/200x200/C4E8D8/0F9D58?text=Team+4" class="w-40 h-40 mx-auto rounded-full shadow-lg" alt="Team member photo">
-                        <h3 class="mt-4 text-xl font-bold">Saad Malik</h3>
-                        <p class="text-green-600 font-semibold">Cloud & AI Lead</p>
-                    </div>
+                <div id="featured-members" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Featured members will be loaded dynamically -->
                 </div>
                 <div class="text-center mt-12">
                     <a href="/members" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-colors">
@@ -256,6 +233,54 @@
         <i data-lucide="arrow-up" class="h-6 w-6"></i>
     </button>
 
-    <script src="js/main.js"></script>
+    <!-- Scripts -->
+    <script src="/js/members-data.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+        // Load featured members on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFeaturedMembers();
+        });
+
+        function loadFeaturedMembers() {
+            const featuredContainer = document.getElementById('featured-members');
+            const featured = getFeaturedMembers();
+            
+            Object.entries(featured).forEach(([role, member]) => {
+                if (member) {
+                    const memberCard = createFeaturedMemberCard(member, role);
+                    featuredContainer.appendChild(memberCard);
+                }
+            });
+        }
+
+        function createFeaturedMemberCard(member, role) {
+            const card = document.createElement('div');
+            card.className = 'team-member text-center p-4 cursor-pointer transform transition-all hover:scale-105';
+            card.addEventListener('click', () => {
+                window.location.href = `/members/member?id=${getKeyByValue(membersData, member)}`;
+            });
+            
+            // Get team color for role styling
+            const teamConfig = getTeamConfig(member.team);
+            const roleColor = teamConfig ? teamConfig.color : '#4285F4';
+            
+            card.innerHTML = `
+                <img src="${member.imageUrl}" 
+                     class="w-40 h-40 mx-auto rounded-full shadow-lg object-cover border-4 border-white" 
+                     alt="${member.name}" 
+                     onerror="this.src='https://placehold.co/160x160/${roleColor.replace('#', '')}/FFFFFF?text=${member.name.split(' ').map(n => n[0]).join('')}'">
+                <h3 class="mt-4 text-xl font-bold text-gray-800">${member.name}</h3>
+                <p class="text-lg font-semibold" style="color: ${roleColor}">${role}</p>
+                <p class="text-sm text-gray-500 mt-1">${member.team} Team</p>
+            `;
+            
+            return card;
+        }
+
+        function getKeyByValue(object, value) {
+            return Object.keys(object).find(key => object[key] === value);
+        }
+    </script>
 </body>
 </html>

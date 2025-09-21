@@ -6,55 +6,8 @@
     <title id="page-title">Member Profile | GDG Wah Campus</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/members/member/css/member-profile.css">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-2px);
-        }
-        
-        .profile-card {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-        
-        .back-button {
-            transition: all 0.3s ease;
-        }
-        
-        .back-button:hover {
-            transform: translateX(-4px);
-        }
-
-        .loading-spinner {
-            border: 3px solid #f3f4f6;
-            border-top: 3px solid #4285F4;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .profile-image {
-            transition: all 0.3s ease;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-        }
-    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
 
@@ -100,7 +53,7 @@
 
         <!-- Error State -->
         <div id="error-section" class="hidden min-h-screen flex items-center justify-center">
-            <div class="text-center">
+            <div class="text-center max-w-md mx-auto px-6">
                 <i data-lucide="user-x" class="w-16 h-16 text-gray-400 mx-auto mb-4"></i>
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Member Not Found</h2>
                 <p class="text-gray-600 mb-6">The requested member profile could not be found.</p>
@@ -112,9 +65,9 @@
 
         <!-- Profile Content -->
         <div id="profile-content" class="hidden">
-            <!-- Hero Section with Gradient Background -->
-            <section class="gradient-bg py-20 relative overflow-hidden">
-                <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+            <!-- Hero Section with Dynamic Background -->
+            <section class="profile-hero-bg py-20 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-black/20 to-black/40"></div>
                 <div class="container mx-auto px-6 relative z-10">
                     <!-- Back Button -->
                     <div class="mb-8">
@@ -125,31 +78,61 @@
                     </div>
 
                     <!-- Profile Card -->
-                    <div class="profile-card max-w-4xl mx-auto rounded-3xl p-8 md:p-12 shadow-2xl">
-                        <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center md:items-start">
+                    <div class="profile-card max-w-5xl mx-auto rounded-3xl p-8 md:p-12 shadow-2xl">
+                        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center lg:items-start">
                             <!-- Profile Image -->
-                            <div class="flex-shrink-0">
-                                <img id="member-image" src="" alt="Member photo" class="profile-image w-48 h-48 rounded-full shadow-xl object-cover border-4 border-white">
+                            <div class="flex-shrink-0 text-center lg:text-left">
+                                <img id="member-image" src="" alt="Member photo" class="profile-image w-48 h-48 mx-auto lg:mx-0 rounded-full shadow-xl object-cover border-6 border-white">
+                                <div class="mt-4">
+                                    <span id="member-status" class="status-badge inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
+                                        <div class="w-2 h-2 rounded-full mr-2"></div>
+                                        <span>Active Member</span>
+                                    </span>
+                                </div>
                             </div>
                             
                             <!-- Profile Info -->
-                            <div class="flex-1 text-center md:text-left">
-                                <h1 id="member-name" class="text-4xl md:text-5xl font-bold text-gray-800 mb-2"></h1>
-                                <p id="member-role" class="text-xl md:text-2xl font-semibold text-blue-600 mb-4"></p>
-                                <p id="member-team" class="text-lg text-gray-600 mb-6"></p>
+                            <div class="flex-1 text-center lg:text-left">
+                                <h1 id="member-name" class="text-4xl lg:text-5xl font-bold text-gray-800 mb-2"></h1>
+                                <p id="member-role" class="text-xl lg:text-2xl font-semibold mb-2" style="color: var(--team-color, #4285F4)"></p>
+                                <p id="member-team" class="text-lg text-gray-600 mb-4"></p>
+                                
+                                <!-- Quick Info -->
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                                    <div class="info-item">
+                                        <i data-lucide="calendar" class="w-5 h-5 text-gray-400 mb-1"></i>
+                                        <div class="text-sm text-gray-500">Joined</div>
+                                        <div id="member-joined" class="font-semibold text-gray-800">2023</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <i data-lucide="map-pin" class="w-5 h-5 text-gray-400 mb-1"></i>
+                                        <div class="text-sm text-gray-500">Location</div>
+                                        <div id="member-location" class="font-semibold text-gray-800">Wah Cantt</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <i data-lucide="graduation-cap" class="w-5 h-5 text-gray-400 mb-1"></i>
+                                        <div class="text-sm text-gray-500">Education</div>
+                                        <div id="member-qualification" class="font-semibold text-gray-800">BS CS</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <i data-lucide="building" class="w-5 h-5 text-gray-400 mb-1"></i>
+                                        <div class="text-sm text-gray-500">Department</div>
+                                        <div id="member-department" class="font-semibold text-gray-800">CS</div>
+                                    </div>
+                                </div>
                                 
                                 <!-- Social Links -->
-                                <div id="social-links" class="flex justify-center md:justify-start space-x-4 mb-8">
+                                <div id="social-links" class="flex justify-center lg:justify-start space-x-3 mb-8">
                                     <!-- Social icons will be dynamically added here -->
                                 </div>
 
-                                <!-- Contact Button -->
-                                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                                    <a href="mailto:gdg.wahcampus@example.com" class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                                <!-- Action Buttons -->
+                                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                    <a id="contact-email" href="mailto:" class="btn-primary inline-flex items-center justify-center">
                                         <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
                                         Get in Touch
                                     </a>
-                                    <a href="/members" class="inline-flex items-center border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                                    <a href="/members" class="btn-secondary inline-flex items-center justify-center">
                                         <i data-lucide="users" class="w-5 h-5 mr-2"></i>
                                         View All Members
                                     </a>
@@ -162,50 +145,116 @@
 
             <!-- About Section -->
             <section class="py-20">
-                <div class="container mx-auto px-6 max-w-4xl">
-                    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-                        <div class="flex items-center mb-8">
-                            <i data-lucide="user" class="w-8 h-8 text-blue-600 mr-3"></i>
-                            <h2 class="text-3xl font-bold text-gray-800">About Me</h2>
-                        </div>
+                <div class="container mx-auto px-6 max-w-6xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         
-                        <div id="member-bio" class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-                            <!-- Bio content will be dynamically loaded here -->
+                        <!-- Main Bio -->
+                        <div class="lg:col-span-2">
+                            <div class="content-card">
+                                <div class="flex items-center mb-6">
+                                    <i data-lucide="user" class="w-8 h-8 text-blue-600 mr-3"></i>
+                                    <h2 class="text-3xl font-bold text-gray-800">About Me</h2>
+                                </div>
+                                
+                                <div id="member-bio" class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                                    <!-- Bio content will be dynamically loaded here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sidebar Info -->
+                        <div class="space-y-6">
+                            
+                            <!-- Skills -->
+                            <div class="content-card">
+                                <div class="flex items-center mb-4">
+                                    <i data-lucide="zap" class="w-6 h-6 text-yellow-600 mr-2"></i>
+                                    <h3 class="text-xl font-bold text-gray-800">Skills</h3>
+                                </div>
+                                <div id="member-skills" class="flex flex-wrap gap-2">
+                                    <!-- Skills will be loaded dynamically -->
+                                </div>
+                            </div>
+
+                            <!-- Member Details -->
+                            <div class="content-card">
+                                <div class="flex items-center mb-4">
+                                    <i data-lucide="info" class="w-6 h-6 text-blue-600 mr-2"></i>
+                                    <h3 class="text-xl font-bold text-gray-800">Member Details</h3>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="detail-item">
+                                        <span class="detail-label">Member ID</span>
+                                        <span id="member-id" class="detail-value">GDG-M001</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Membership Type</span>
+                                        <span id="member-type" class="detail-value">Core Team</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">University</span>
+                                        <span id="member-university" class="detail-value">University of Wah</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Phone</span>
+                                        <span id="member-phone" class="detail-value">+92-300-XXXXXXX</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Interests -->
+                            <div class="content-card">
+                                <div class="flex items-center mb-4">
+                                    <i data-lucide="heart" class="w-6 h-6 text-red-600 mr-2"></i>
+                                    <h3 class="text-xl font-bold text-gray-800">Interests</h3>
+                                </div>
+                                <div id="member-interests" class="space-y-2">
+                                    <!-- Interests will be loaded dynamically -->
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Team Section -->
+            <!-- Achievements Section -->
             <section class="py-20 bg-gray-50">
-                <div class="container mx-auto px-6 max-w-4xl">
-                    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-                        <div class="flex items-center mb-8">
-                            <i data-lucide="users" class="w-8 h-8 text-blue-600 mr-3"></i>
-                            <h2 class="text-3xl font-bold text-gray-800">Team Contribution</h2>
+                <div class="container mx-auto px-6 max-w-6xl">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Achievements & Contributions</h2>
+                        <p class="text-gray-600">Highlights of their journey with GDG Wah Campus</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Achievements -->
+                        <div class="content-card">
+                            <div class="flex items-center mb-6">
+                                <i data-lucide="trophy" class="w-8 h-8 text-yellow-600 mr-3"></i>
+                                <h3 class="text-2xl font-bold text-gray-800">Key Achievements</h3>
+                            </div>
+                            <div id="member-achievements" class="space-y-4">
+                                <!-- Achievements will be loaded dynamically -->
+                            </div>
                         </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="flex items-start space-x-4">
-                                <div class="bg-blue-100 p-3 rounded-full">
-                                    <i data-lucide="target" class="w-6 h-6 text-blue-600"></i>
-                                </div>
+
+                        <!-- Role & Responsibilities -->
+                        <div class="content-card">
+                            <div class="flex items-center mb-6">
+                                <i data-lucide="target" class="w-8 h-8 text-blue-600 mr-3"></i>
+                                <h3 class="text-2xl font-bold text-gray-800">Role & Responsibilities</h3>
+                            </div>
+                            <div class="space-y-4">
                                 <div>
-                                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Role & Responsibilities</h3>
-                                    <p id="member-responsibilities" class="text-gray-600">
-                                        <!-- Dynamic content based on role -->
+                                    <h4 class="font-semibold text-gray-800 mb-2">Current Role</h4>
+                                    <p id="role-description" class="text-gray-600">
+                                        <!-- Role description will be loaded dynamically -->
                                     </p>
                                 </div>
-                            </div>
-                            
-                            <div class="flex items-start space-x-4">
-                                <div class="bg-green-100 p-3 rounded-full">
-                                    <i data-lucide="heart" class="w-6 h-6 text-green-600"></i>
-                                </div>
                                 <div>
-                                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Interests & Expertise</h3>
-                                    <p id="member-interests" class="text-gray-600">
-                                        <!-- Dynamic content based on team/role -->
+                                    <h4 class="font-semibold text-gray-800 mb-2">Key Focus Areas</h4>
+                                    <p id="focus-areas" class="text-gray-600">
+                                        <!-- Focus areas will be loaded dynamically -->
                                     </p>
                                 </div>
                             </div>
@@ -225,133 +274,8 @@
         </div>
     </footer>
 
-    <script src="/js/members.js"></script>
-    <script>
-        lucide.createIcons();
-
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Social icon mapping
-        const socialIconMap = {
-            linkedin: '<i data-lucide="linkedin"></i>',
-            github: '<i data-lucide="github"></i>',
-            twitter: '<i data-lucide="twitter"></i>',
-            instagram: '<i data-lucide="instagram"></i>',
-            dribbble: '<i data-lucide="dribbble"></i>',
-        };
-
-        // Role-based responsibilities and interests
-        const roleDetails = {
-            'Lead Organizer': {
-                responsibilities: 'Leading community initiatives, organizing events, fostering partnerships, and maintaining the overall vision of GDG Wah Campus.',
-                interests: 'Community building, project management, technology leadership, and creating inclusive environments for learning.'
-            },
-            'Co-Lead': {
-                responsibilities: 'Supporting leadership initiatives, technical direction, workshop coordination, and member mentorship.',
-                interests: 'Technical leadership, software development, community engagement, and knowledge sharing.'
-            },
-            'Community Manager': {
-                responsibilities: 'Managing member engagement, communication channels, networking events, and community growth strategies.',
-                interests: 'Community building, social media management, event planning, and member relations.'
-            },
-            'AI Lead': {
-                responsibilities: 'Leading AI and machine learning initiatives, organizing study sessions, and mentoring members in AI technologies.',
-                interests: 'Artificial intelligence, machine learning, neural networks, and data science applications.'
-            },
-            'Data Science Core': {
-                responsibilities: 'Supporting data science workshops, creating educational content, and mentoring aspiring data scientists.',
-                interests: 'Data analysis, statistical modeling, data visualization, and predictive analytics.'
-            },
-            'Web Lead': {
-                responsibilities: 'Leading web development projects, organizing frontend/backend workshops, and maintaining community web presence.',
-                interests: 'Full-stack development, modern web frameworks, responsive design, and web performance optimization.'
-            },
-            'App Lead': {
-                responsibilities: 'Leading mobile app development initiatives, organizing app development workshops, and guiding mobile projects.',
-                interests: 'Mobile app development, UI/UX design, cross-platform development, and app store optimization.'
-            },
-            'Marketing Lead': {
-                responsibilities: 'Creating marketing strategies, managing social media presence, content creation, and brand promotion.',
-                interests: 'Digital marketing, content strategy, social media management, and brand development.'
-            },
-            'Graphics Lead': {
-                responsibilities: 'Creating visual content, designing event materials, maintaining brand consistency, and conducting design workshops.',
-                interests: 'Graphic design, visual identity, creative software, and user interface design.'
-            },
-            'Event Lead': {
-                responsibilities: 'Planning and executing events, venue coordination, logistics management, and ensuring smooth event operations.',
-                interests: 'Event planning, project coordination, logistics management, and hospitality.'
-            }
-        };
-
-        // Get member ID from URL parameters
-        function getMemberIdFromUrl() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('id');
-        }
-
-        // Load member profile
-        function loadMemberProfile() {
-            const memberId = getMemberIdFromUrl();
-            
-            if (!memberId || !membersData[memberId]) {
-                // Show error state
-                document.getElementById('loading-section').classList.add('hidden');
-                document.getElementById('error-section').classList.remove('hidden');
-                return;
-            }
-
-            const member = membersData[memberId];
-            
-            // Update page title
-            document.getElementById('page-title').textContent = `${member.name} | GDG Wah Campus`;
-            
-            // Populate member information
-            document.getElementById('member-image').src = member.imageUrl;
-            document.getElementById('member-image').alt = member.name;
-            document.getElementById('member-name').textContent = member.name;
-            document.getElementById('member-role').textContent = member.role;
-            document.getElementById('member-team').textContent = `${member.team} Team`;
-            document.getElementById('member-bio').innerHTML = member.bio;
-
-            // Add role-based details
-            const roleInfo = roleDetails[member.role];
-            if (roleInfo) {
-                document.getElementById('member-responsibilities').textContent = roleInfo.responsibilities;
-                document.getElementById('member-interests').textContent = roleInfo.interests;
-            }
-
-            // Add social links
-            const socialLinksContainer = document.getElementById('social-links');
-            socialLinksContainer.innerHTML = '';
-            
-            member.socials.forEach(social => {
-                const socialLink = document.createElement('a');
-                socialLink.href = social.url;
-                socialLink.target = '_blank';
-                socialLink.rel = 'noopener noreferrer';
-                socialLink.className = 'social-icon text-gray-600 hover:text-blue-600 p-3 bg-white hover:bg-blue-50 rounded-full shadow-md transition-all duration-300';
-                socialLink.innerHTML = socialIconMap[social.type] || '';
-                socialLinksContainer.appendChild(socialLink);
-            });
-
-            // Re-initialize lucide icons
-            lucide.createIcons();
-
-            // Show profile content and hide loading
-            document.getElementById('loading-section').classList.add('hidden');
-            document.getElementById('profile-content').classList.remove('hidden');
-        }
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            loadMemberProfile();
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="/js/members-data.js"></script>
+    <script src="/members/member/js/member-profile.js"></script>
 </body>
 </html>
