@@ -1,6 +1,7 @@
 /* members/css/members.css */
 
 /* Import base styles */
+@import url('/css/style.css');
 
 /* Team category expandable sections */
 .team-category-header {
