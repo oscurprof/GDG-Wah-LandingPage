@@ -1,7 +1,6 @@
 /* members/member/css/member-profile.css */
 
 /* Import base styles */
-@import url('/css/style.css');
 
 /* Dynamic hero background based on team color */
 .profile-hero-bg {
