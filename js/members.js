@@ -732,3 +732,166 @@ const membersData = {
         ]
     }
 };
+
+// ========================================
+// CENTRALIZED MEMBER MANAGEMENT FUNCTIONS
+// ========================================
+
+// Get members by role (for main homepage leadership display)
+function getMembersByRole(...roles) {
+    return Object.entries(membersData)
+        .filter(([id, member]) => roles.includes(member.role))
+        .map(([id, member]) => ({ id, ...member }));
+}
+
+// Get members by team (for team page display)
+function getMembersByTeam(teamName) {
+    return Object.entries(membersData)
+        .filter(([id, member]) => member.team === teamName)
+        .map(([id, member]) => ({ id, ...member }));
+}
+
+// Get all teams with their members
+function getAllTeamsWithMembers() {
+    const teams = {};
+    Object.entries(membersData).forEach(([id, member]) => {
+        if (!teams[member.team]) {
+            teams[member.team] = [];
+        }
+        teams[member.team].push({ id, ...member });
+    });
+    return teams;
+}
+
+// Get specific member by ID
+function getMemberById(memberId) {
+    return membersData[memberId] ? { id: memberId, ...membersData[memberId] } : null;
+}
+
+// Get leadership members for homepage (Faculty Head, Campus Lead, Chairperson, Technical Lead)
+function getLeadershipMembers() {
+    return getMembersByRole('Faculty Head', 'Campus Lead', 'Chairperson', 'Technical Lead');
+}
+
+// ========================================
+// DYNAMIC CONTENT LOADING FUNCTIONS
+// ========================================
+
+// Load leadership team for main homepage
+function loadHomepageLeadership() {
+    const teamContainer = document.querySelector('#team .grid');
+    if (!teamContainer) return;
+
+    const leadership = getLeadershipMembers();
+    const colorClasses = [
+        { bg: 'C4D7FE', color: '4285F4', textColor: 'blue-600' },
+        { bg: 'F8DDC4', color: 'DB4437', textColor: 'red-600' },
+        { bg: 'FDEBC4', color: 'F4B400', textColor: 'yellow-600' },
+        { bg: 'C4E8D8', color: '0F9D58', textColor: 'green-600' }
+    ];
+
+    teamContainer.innerHTML = '';
+    
+    leadership.slice(0, 4).forEach((member, index) => {
+        const colorClass = colorClasses[index] || colorClasses[0];
+        const memberElement = document.createElement('div');
+        memberElement.className = 'team-member text-center p-4';
+        memberElement.innerHTML = `
+            <img src="https://placehold.co/200x200/${colorClass.bg}/${colorClass.color}?text=${encodeURIComponent(member.name.split(' ')[0])}" 
+                 class="w-40 h-40 mx-auto rounded-full shadow-lg" alt="${member.name}">
+            <h3 class="mt-4 text-xl font-bold">${member.name}</h3>
+            <p class="text-${colorClass.textColor} font-semibold">${member.role}</p>
+        `;
+        teamContainer.appendChild(memberElement);
+    });
+}
+
+// Load all teams for members page
+function loadAllTeams() {
+    const teamsContainer = document.querySelector('.container.mx-auto.px-6.max-w-6xl');
+    if (!teamsContainer) return;
+
+    const teams = getAllTeamsWithMembers();
+    const teamOrder = ['Executives', 'AI & DS', 'Web & App', 'Social Media & Marketing', 'Media & Graphics', 'Event & Decor'];
+    const colorClasses = ['blue', 'green', 'red', 'yellow', 'blue', 'green'];
+
+    // Clear existing content except the first team category (keep the structure)
+    const existingCategories = teamsContainer.querySelectorAll('.team-category-container');
+    existingCategories.forEach(category => category.remove());
+
+    teamOrder.forEach((teamName, index) => {
+        if (!teams[teamName] || teams[teamName].length === 0) return;
+
+        const colorClass = colorClasses[index % colorClasses.length];
+        const teamContainer = document.createElement('div');
+        teamContainer.className = 'team-category-container mb-12';
+        
+        teamContainer.innerHTML = `
+            <div class="team-category-header category-expanded">
+                <i data-lucide="chevron-right" class="category-icon text-${colorClass}-500"></i>
+                <h2 class="text-3xl font-bold text-gray-800">${teamName}</h2>
+            </div>
+            <div class="team-category-content expanded">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-8">
+                    ${teams[teamName].map(member => `
+                        <div class="member-card" data-member-id="${member.id}">
+                            <img src="${member.imageUrl}" class="w-32 h-32 mx-auto rounded-full shadow-lg" alt="${member.name}">
+                            <h3 class="mt-5 text-xl font-bold text-gray-800">${member.name}</h3>
+                            <p class="mt-1 text-${colorClass}-600 font-semibold">${member.role}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+        
+        teamsContainer.appendChild(teamContainer);
+    });
+
+    // Re-initialize lucide icons and event handlers
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+
+    // Re-attach event handlers
+    attachTeamEventHandlers();
+}
+
+// Attach event handlers for team page
+function attachTeamEventHandlers() {
+    // Category toggle functionality
+    document.querySelectorAll('.team-category-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling;
+            header.classList.toggle('category-expanded');
+            content.classList.toggle('expanded');
+        });
+    });
+
+    // Member card click handler
+    document.querySelectorAll('.member-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const memberId = card.dataset.memberId;
+            window.location.href = `/members/member?id=${memberId}`;
+        });
+    });
+}
+
+// Initialize content based on current page
+function initializeDynamicContent() {
+    // Check if we're on the main homepage
+    if (document.querySelector('#team .grid')) {
+        loadHomepageLeadership();
+    }
+    
+    // Check if we're on the members page
+    if (document.querySelector('.team-category-container')) {
+        loadAllTeams();
+    }
+}
+
+// Initialize when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeDynamicContent);
+} else {
+    initializeDynamicContent();
+}
