@@ -7,78 +7,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        /* Styles inspired by your portfolio for expandable sections */
-        .team-category-header {
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 0;
-        }
-        
-        .team-category-header:hover h2 {
-            color: #4285F4; /* GDG Blue */
-        }
-        
-        .team-category-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.8s cubic-bezier(0.22, 1, 0.36, 1); /* Smooth ease-out */
-            border-left: 2px solid #e5e7eb; /* Gray-200 */
-            padding-left: 2rem;
-            margin-left: 0.75rem; /* Align with icon center */
-        }
-        
-        .team-category-content.expanded {
-            max-height: 5000px; /* Large enough to not clip content */
-        }
-        
-        .category-icon {
-            transition: transform 0.4s ease;
-        }
-        
-        .category-expanded .category-icon {
-            transform: rotate(90deg);
-        }
-
-        /* Member card styling */
-        .member-card {
-            background-color: #ffffff;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-        .member-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-        }
-        .member-card img {
-            transition: transform 0.3s ease;
-        }
-        .member-card:hover img {
-            transform: scale(1.05);
-        }
-    </style>
+    <link rel="stylesheet" href="css/members.css">
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
 
     <!-- Header -->
     <header id="header" class="bg-white sticky top-0 z-50 shadow-md transition-all duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="flex items-center space-x-2">
+            <a href="../" class="flex items-center space-x-2">
                 <img src="https://placehold.co/40x40/4285F4/FFFFFF?text=G" alt="GDG Logo" class="rounded-full">
                 <span class="text-xl font-bold text-gray-700">GDG <span class="font-semibold text-gray-500">Wah Campus</span></span>
             </a>
             <div class="hidden lg:flex items-center space-x-8 nav-links">
-                <a href="/" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
-                <a href="/members" class="text-gray-600 hover:text-blue-600 font-medium text-blue-600">Team</a>
-                <a href="/#events" class="text-gray-600 hover:text-blue-600 font-medium">Events</a>
-                <a href="/#contact" class="text-gray-600 hover:text-blue-600 font-medium">Contact</a>
+                <a href="../" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
+                <a href="../#about" class="text-gray-600 hover:text-blue-600 font-medium">About</a>
+                <a href="../#events" class="text-gray-600 hover:text-blue-600 font-medium">Events</a>
+                <a href="./" class="text-blue-600 font-medium">Team</a>
+                <a href="../#contact" class="text-gray-600 hover:text-blue-600 font-medium">Contact</a>
             </div>
             <div class="hidden lg:flex items-center space-x-4">
                 <a href="#" class="text-gray-500 hover:text-blue-600" aria-label="Twitter"><i data-lucide="twitter"></i></a>
@@ -91,50 +36,124 @@
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4">
-             <a href="/" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
-             <a href="/members" class="block py-2 text-blue-600">Team</a>
-             <a href="/#events" class="block py-2 text-gray-600 hover:text-blue-600">Events</a>
-             <a href="/#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
+            <a href="../" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
+            <a href="../#about" class="block py-2 text-gray-600 hover:text-blue-600">About</a>
+            <a href="../#events" class="block py-2 text-gray-600 hover:text-blue-600">Events</a>
+            <a href="./" class="block py-2 text-blue-600">Team</a>
+            <a href="../#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
         </div>
     </header>
 
     <main>
         <!-- Page Header -->
-        <section class="hero-bg pt-24 pb-16">
-            <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800">Meet Our Team</h1>
-                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-                    The passionate individuals driving our community forward. We are a collective of students, developers, and designers dedicated to learning and sharing knowledge.
-                </p>
+        <section class="bg-gradient-to-br from-blue-50 via-white to-purple-50 pt-24 pb-16">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-8">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800">Meet Our Team</h1>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                        The passionate individuals driving our community forward. We are a collective of students, developers, and designers dedicated to learning and sharing knowledge.
+                    </p>
+                </div>
+                
+                <!-- Team Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+                    <div class="text-center">
+                        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="users" class="w-8 h-8 text-blue-600"></i>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-800" id="total-members">70+</div>
+                        <div class="text-sm text-gray-600">Total Members</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="layers" class="w-8 h-8 text-green-600"></i>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-800" id="total-teams">6</div>
+                        <div class="text-sm text-gray-600">Active Teams</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="calendar" class="w-8 h-8 text-yellow-600"></i>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-800">15+</div>
+                        <div class="text-sm text-gray-600">Events Hosted</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="award" class="w-8 h-8 text-purple-600"></i>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-800">3</div>
+                        <div class="text-sm text-gray-600">Hackathons</div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Teams Section -->
         <section class="py-20">
-            <div class="container mx-auto px-6 max-w-6xl">
+            <div id="teams-container" class="container mx-auto px-6 max-w-7xl">
                 <!-- Teams will be dynamically loaded here from members.js -->
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-gray-800 text-white py-16">
+    <footer class="bg-gray-800 text-white py-16">
         <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">GDG Wah Campus</h3>
+                    <p class="text-gray-400">Building the future of tech in Wah, together.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="Twitter"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="../#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../#events" class="text-gray-400 hover:text-white transition-colors">Events</a></li>
+                        <li><a href="https://gdg.community.dev/" target="_blank" class="text-gray-400 hover:text-white transition-colors">Become a Member</a></li>
+                        <li><a href="https://developers.google.com/" target="_blank" class="text-gray-400 hover:text-white transition-colors">Google for Developers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <p class="text-gray-400">Have questions or want to collaborate? <br> Reach out to us!</p>
+                    <a href="mailto:gdg.wahcampus@example.com" class="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors">Email Us</a>
+                </div>
+            </div>
             <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-500">
                 <p>&copy; 2025 GDG Wah Campus. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
     
-    <script src="/js/members.js"></script>
+    <!-- Scripts -->
+    <script src="../js/members.js"></script>
+    <script src="js/members.js"></script>
     <script>
+        // Initialize lucide icons
         lucide.createIcons();
 
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Load teams when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            const teamsContainer = document.getElementById('teams-container');
+            if (teamsContainer) {
+                loadAllTeamsForMembersPage();
+            }
         });
     </script>
 </body>

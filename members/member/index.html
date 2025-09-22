@@ -7,69 +7,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-2px);
-        }
-        
-        .profile-card {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-        
-        .back-button {
-            transition: all 0.3s ease;
-        }
-        
-        .back-button:hover {
-            transform: translateX(-4px);
-        }
-
-        .loading-spinner {
-            border: 3px solid #f3f4f6;
-            border-top: 3px solid #4285F4;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .profile-image {
-            transition: all 0.3s ease;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-        }
-    </style>
+    <link rel="stylesheet" href="css/member.css">
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
 
     <!-- Header -->
     <header id="header" class="bg-white sticky top-0 z-50 shadow-md transition-all duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="flex items-center space-x-2">
+            <a href="../../" class="flex items-center space-x-2">
                 <img src="https://placehold.co/40x40/4285F4/FFFFFF?text=G" alt="GDG Logo" class="rounded-full">
                 <span class="text-xl font-bold text-gray-700">GDG <span class="font-semibold text-gray-500">Wah Campus</span></span>
             </a>
             <div class="hidden lg:flex items-center space-x-8 nav-links">
-                <a href="/" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
-                <a href="/members" class="text-gray-600 hover:text-blue-600 font-medium">Team</a>
-                <a href="/#events" class="text-gray-600 hover:text-blue-600 font-medium">Events</a>
-                <a href="/#contact" class="text-gray-600 hover:text-blue-600 font-medium">Contact</a>
+                <a href="../../" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
+                <a href="../../#about" class="text-gray-600 hover:text-blue-600 font-medium">About</a>
+                <a href="../../#events" class="text-gray-600 hover:text-blue-600 font-medium">Events</a>
+                <a href="../" class="text-gray-600 hover:text-blue-600 font-medium">Team</a>
+                <a href="../../#contact" class="text-gray-600 hover:text-blue-600 font-medium">Contact</a>
             </div>
             <div class="hidden lg:flex items-center space-x-4">
                 <a href="#" class="text-gray-500 hover:text-blue-600" aria-label="Twitter"><i data-lucide="twitter"></i></a>
@@ -82,10 +36,11 @@
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4">
-             <a href="/" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
-             <a href="/members" class="block py-2 text-gray-600 hover:text-blue-600">Team</a>
-             <a href="/#events" class="block py-2 text-gray-600 hover:text-blue-600">Events</a>
-             <a href="/#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
+            <a href="../../" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
+            <a href="../../#about" class="block py-2 text-gray-600 hover:text-blue-600">About</a>
+            <a href="../../#events" class="block py-2 text-gray-600 hover:text-blue-600">Events</a>
+            <a href="../" class="block py-2 text-gray-600 hover:text-blue-600">Team</a>
+            <a href="../../#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
         </div>
     </header>
 
@@ -104,7 +59,7 @@
                 <i data-lucide="user-x" class="w-16 h-16 text-gray-400 mx-auto mb-4"></i>
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Member Not Found</h2>
                 <p class="text-gray-600 mb-6">The requested member profile could not be found.</p>
-                <a href="/members" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                <a href="../" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
                     Back to Team
                 </a>
             </div>
@@ -112,44 +67,92 @@
 
         <!-- Profile Content -->
         <div id="profile-content" class="hidden">
-            <!-- Hero Section with Gradient Background -->
-            <section class="gradient-bg py-20 relative overflow-hidden">
+            <!-- Hero Section -->
+            <section class="profile-hero relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700"></div>
                 <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-                <div class="container mx-auto px-6 relative z-10">
+                
+                <!-- Animated background elements -->
+                <div class="absolute inset-0 overflow-hidden">
+                    <div class="floating-element absolute top-20 left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full"></div>
+                    <div class="floating-element absolute top-40 right-20 w-32 h-32 bg-white bg-opacity-5 rounded-full" style="animation-delay: 2s;"></div>
+                    <div class="floating-element absolute bottom-20 left-1/4 w-16 h-16 bg-white bg-opacity-10 rounded-full" style="animation-delay: 4s;"></div>
+                </div>
+                
+                <div class="container mx-auto px-6 py-20 relative z-10">
                     <!-- Back Button -->
                     <div class="mb-8">
-                        <a href="/members" class="back-button inline-flex items-center text-white hover:text-gray-200 font-medium">
+                        <a href="../" class="back-button inline-flex items-center text-white hover:text-gray-200 font-medium">
                             <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
                             Back to Team
                         </a>
                     </div>
 
                     <!-- Profile Card -->
-                    <div class="profile-card max-w-4xl mx-auto rounded-3xl p-8 md:p-12 shadow-2xl">
-                        <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center md:items-start">
-                            <!-- Profile Image -->
-                            <div class="flex-shrink-0">
-                                <img id="member-image" src="" alt="Member photo" class="profile-image w-48 h-48 rounded-full shadow-xl object-cover border-4 border-white">
+                    <div class="profile-card max-w-5xl mx-auto">
+                        <div class="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
+                            <!-- Profile Image & Quick Stats -->
+                            <div class="flex-shrink-0 text-center lg:text-left">
+                                <div class="relative mb-6">
+                                    <img id="member-image" src="" alt="Member photo" class="profile-image w-48 h-48 rounded-2xl shadow-2xl object-cover border-4 border-white mx-auto lg:mx-0">
+                                    <div id="member-status" class="absolute -bottom-2 -right-2 bg-green-500 w-8 h-8 rounded-full border-4 border-white flex items-center justify-center">
+                                        <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Quick Stats -->
+                                <div class="grid grid-cols-2 gap-4 mb-6">
+                                    <div class="bg-white bg-opacity-20 rounded-xl p-4 text-center">
+                                        <div class="text-2xl font-bold text-white" id="membership-duration">-</div>
+                                        <div class="text-xs text-white text-opacity-80">Experience</div>
+                                    </div>
+                                    <div class="bg-white bg-opacity-20 rounded-xl p-4 text-center">
+                                        <div class="text-2xl font-bold text-white" id="team-role">Member</div>
+                                        <div class="text-xs text-white text-opacity-80">Position</div>
+                                    </div>
+                                </div>
                             </div>
                             
                             <!-- Profile Info -->
-                            <div class="flex-1 text-center md:text-left">
-                                <h1 id="member-name" class="text-4xl md:text-5xl font-bold text-gray-800 mb-2"></h1>
-                                <p id="member-role" class="text-xl md:text-2xl font-semibold text-blue-600 mb-4"></p>
-                                <p id="member-team" class="text-lg text-gray-600 mb-6"></p>
+                            <div class="flex-1 text-center lg:text-left">
+                                <div class="mb-6">
+                                    <h1 id="member-name" class="text-4xl lg:text-5xl font-bold text-white mb-3"></h1>
+                                    <p id="member-role" class="text-xl lg:text-2xl font-semibold text-blue-200 mb-2"></p>
+                                    <p id="member-team" class="text-lg text-white text-opacity-80 mb-4"></p>
+                                    <p id="member-location" class="text-white text-opacity-70 flex items-center justify-center lg:justify-start">
+                                        <i data-lucide="map-pin" class="w-4 h-4 mr-2"></i>
+                                        <span></span>
+                                    </p>
+                                </div>
+
+                                <!-- Member Details Grid -->
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                                    <div class="bg-white bg-opacity-20 rounded-xl p-4">
+                                        <div class="text-sm text-white text-opacity-80 mb-1">Department</div>
+                                        <div id="member-department" class="font-semibold text-white"></div>
+                                    </div>
+                                    <div class="bg-white bg-opacity-20 rounded-xl p-4">
+                                        <div class="text-sm text-white text-opacity-80 mb-1">University</div>
+                                        <div id="member-university" class="font-semibold text-white"></div>
+                                    </div>
+                                    <div class="bg-white bg-opacity-20 rounded-xl p-4">
+                                        <div class="text-sm text-white text-opacity-80 mb-1">Joined</div>
+                                        <div id="member-joined" class="font-semibold text-white"></div>
+                                    </div>
+                                </div>
                                 
                                 <!-- Social Links -->
-                                <div id="social-links" class="flex justify-center md:justify-start space-x-4 mb-8">
+                                <div id="social-links" class="flex justify-center lg:justify-start space-x-4 mb-8">
                                     <!-- Social icons will be dynamically added here -->
                                 </div>
 
-                                <!-- Contact Button -->
-                                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                                    <a href="mailto:gdg.wahcampus@example.com" class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                                <!-- Contact Buttons -->
+                                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                    <a id="contact-email" href="#" class="inline-flex items-center bg-white hover:bg-gray-100 text-gray-800 font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl">
                                         <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
                                         Get in Touch
                                     </a>
-                                    <a href="/members" class="inline-flex items-center border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                                    <a href="../" class="inline-flex items-center border-2 border-white text-white hover:bg-white hover:text-gray-800 font-bold py-3 px-6 rounded-xl transition-all duration-300">
                                         <i data-lucide="users" class="w-5 h-5 mr-2"></i>
                                         View All Members
                                     </a>
@@ -162,51 +165,106 @@
 
             <!-- About Section -->
             <section class="py-20">
-                <div class="container mx-auto px-6 max-w-4xl">
-                    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-                        <div class="flex items-center mb-8">
-                            <i data-lucide="user" class="w-8 h-8 text-blue-600 mr-3"></i>
-                            <h2 class="text-3xl font-bold text-gray-800">About Me</h2>
-                        </div>
-                        
-                        <div id="member-bio" class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-                            <!-- Bio content will be dynamically loaded here -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Team Section -->
-            <section class="py-20 bg-gray-50">
-                <div class="container mx-auto px-6 max-w-4xl">
-                    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-                        <div class="flex items-center mb-8">
-                            <i data-lucide="users" class="w-8 h-8 text-blue-600 mr-3"></i>
-                            <h2 class="text-3xl font-bold text-gray-800">Team Contribution</h2>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="flex items-start space-x-4">
-                                <div class="bg-blue-100 p-3 rounded-full">
-                                    <i data-lucide="target" class="w-6 h-6 text-blue-600"></i>
+                <div class="container mx-auto px-6 max-w-6xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Main Content -->
+                        <div class="lg:col-span-2">
+                            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                                <div class="flex items-center mb-6">
+                                    <i data-lucide="user" class="w-8 h-8 text-blue-600 mr-3"></i>
+                                    <h2 class="text-3xl font-bold text-gray-800">About Me</h2>
                                 </div>
+                                
+                                <div id="member-bio" class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+                                    <!-- Bio content will be dynamically loaded here -->
+                                </div>
+
+                                <!-- Expertise Tags -->
+                                <div class="mb-6">
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Areas of Expertise</h3>
+                                    <div id="member-expertise" class="flex flex-wrap gap-2">
+                                        <!-- Expertise tags will be loaded here -->
+                                    </div>
+                                </div>
+
+                                <!-- Achievements -->
                                 <div>
-                                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Role & Responsibilities</h3>
-                                    <p id="member-responsibilities" class="text-gray-600">
-                                        <!-- Dynamic content based on role -->
-                                    </p>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Key Achievements</h3>
+                                    <div id="member-achievements" class="space-y-2">
+                                        <!-- Achievements will be loaded here -->
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <div class="flex items-start space-x-4">
-                                <div class="bg-green-100 p-3 rounded-full">
-                                    <i data-lucide="heart" class="w-6 h-6 text-green-600"></i>
+                        </div>
+
+                        <!-- Sidebar -->
+                        <div class="lg:col-span-1">
+                            <!-- Membership Details -->
+                            <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                                    <i data-lucide="id-card" class="w-6 h-6 text-blue-600 mr-2"></i>
+                                    Membership Details
+                                </h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="text-sm font-medium text-gray-600">Status</label>
+                                        <div id="membership-status" class="flex items-center mt-1">
+                                            <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                                            <span class="text-gray-800 font-medium">Active</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="text-sm font-medium text-gray-600">Member Type</label>
+                                        <div id="membership-type" class="text-gray-800 font-medium mt-1"></div>
+                                    </div>
+                                    <div>
+                                        <label class="text-sm font-medium text-gray-600">Joining Date</label>
+                                        <div id="joining-date" class="text-gray-800 font-medium mt-1"></div>
+                                    </div>
+                                    <div>
+                                        <label class="text-sm font-medium text-gray-600">Club</label>
+                                        <div id="club-name" class="text-gray-800 font-medium mt-1">GDG Wah Campus</div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Interests & Expertise</h3>
-                                    <p id="member-interests" class="text-gray-600">
-                                        <!-- Dynamic content based on team/role -->
-                                    </p>
+                            </div>
+
+                            <!-- Contact Information -->
+                            <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                                    <i data-lucide="phone" class="w-6 h-6 text-blue-600 mr-2"></i>
+                                    Contact Information
+                                </h3>
+                                <div class="space-y-3">
+                                    <div id="contact-email-info" class="flex items-center text-gray-600">
+                                        <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+                                        <span class="text-sm">Email available on request</span>
+                                    </div>
+                                    <div id="contact-phone-info" class="flex items-center text-gray-600">
+                                        <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+                                        <span class="text-sm">Phone available on request</span>
+                                    </div>
+                                    <div id="contact-location-info" class="flex items-center text-gray-600">
+                                        <i data-lucide="map-pin" class="w-4 h-4 mr-2"></i>
+                                        <span class="text-sm"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Team Contribution -->
+                            <div class="bg-white rounded-2xl shadow-lg p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                                    <i data-lucide="target" class="w-6 h-6 text-blue-600 mr-2"></i>
+                                    Team Contribution
+                                </h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="text-sm font-medium text-gray-600">Primary Role</label>
+                                        <div id="primary-role" class="text-gray-800 font-medium mt-1"></div>
+                                    </div>
+                                    <div>
+                                        <label class="text-sm font-medium text-gray-600">Key Responsibilities</label>
+                                        <div id="key-responsibilities" class="text-sm text-gray-600 mt-1"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -225,168 +283,19 @@
         </div>
     </footer>
 
-    <script src="/js/members.js"></script>
+    <!-- Scripts -->
+    <script src="../../js/members.js"></script>
+    <script src="js/member.js"></script>
     <script>
         lucide.createIcons();
 
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Social icon mapping
-        const socialIconMap = {
-            linkedin: '<i data-lucide="linkedin"></i>',
-            github: '<i data-lucide="github"></i>',
-            twitter: '<i data-lucide="twitter"></i>',
-            instagram: '<i data-lucide="instagram"></i>',
-            dribbble: '<i data-lucide="dribbble"></i>',
-        };
-
-        // Role-based responsibilities and interests
-        const roleDetails = {
-            'Faculty Head': {
-                responsibilities: 'Providing academic oversight, guiding strategic initiatives, fostering partnerships with educational institutions, and ensuring alignment with university policies.',
-                interests: 'Educational technology, curriculum development, academic research, and building bridges between academia and industry.'
-            },
-            'Campus Lead': {
-                responsibilities: 'Leading community initiatives, organizing events, fostering partnerships, and maintaining the overall vision of GDG Wah Campus.',
-                interests: 'Community building, project management, technology leadership, and creating inclusive environments for learning.'
-            },
-            'Chairperson': {
-                responsibilities: 'Providing strategic direction, overseeing executive decisions, coordinating between teams, and representing the chapter in official matters.',
-                interests: 'Strategic planning, leadership development, organizational management, and stakeholder relations.'
-            },
-            'Technical Lead': {
-                responsibilities: 'Leading the technical direction of the chapter, mentoring members, organizing technical workshops, and overseeing technical projects.',
-                interests: 'Software engineering, emerging technologies, technical mentorship, and hands-on development.'
-            },
-            'Operation Manager': {
-                responsibilities: 'Managing day-to-day operations, coordinating logistics, ensuring smooth execution of events, and maintaining organizational efficiency.',
-                interests: 'Operations management, process optimization, logistics coordination, and organizational efficiency.'
-            },
-            'General Secretory': {
-                responsibilities: 'Handling administrative tasks, maintaining records, managing communications, and supporting organizational documentation.',
-                interests: 'Administration, documentation, communication management, and organizational support.'
-            },
-            'Women in Tech': {
-                responsibilities: 'Championing diversity and inclusion, empowering female members, organizing women-focused events, and promoting gender equality in tech.',
-                interests: 'Diversity and inclusion, women empowerment, community outreach, and creating supportive environments.'
-            },
-            'Treasurer': {
-                responsibilities: 'Managing chapter finances, budgeting for events, tracking expenses, and ensuring financial transparency and accountability.',
-                interests: 'Financial management, budgeting, resource allocation, and financial planning.'
-            },
-            'Al & Data Science Lead': {
-                responsibilities: 'Leading AI and data science initiatives, organizing study sessions, mentoring members in AI technologies, and coordinating research projects.',
-                interests: 'Artificial intelligence, machine learning, data science, neural networks, and research methodologies.'
-            },
-            'Al & Data Science Co-Lead': {
-                responsibilities: 'Supporting AI and data science initiatives, assisting with workshops, mentoring junior members, and contributing to research projects.',
-                interests: 'Machine learning, data analysis, AI applications, and collaborative research.'
-            },
-            'Web & App Lead': {
-                responsibilities: 'Leading web and mobile development projects, organizing development workshops, maintaining community web presence, and guiding technical projects.',
-                interests: 'Full-stack development, mobile app development, modern frameworks, and user experience design.'
-            },
-            'Web & App Co-Lead': {
-                responsibilities: 'Supporting web and app development initiatives, assisting with technical workshops, and contributing to development projects.',
-                interests: 'Frontend/backend development, mobile technologies, web frameworks, and collaborative development.'
-            },
-            'Al Research Lead': {
-                responsibilities: 'Leading AI research initiatives, coordinating research projects, organizing academic collaborations, and exploring new AI frontiers.',
-                interests: 'AI research, academic publications, cutting-edge algorithms, and theoretical foundations of AI.'
-            },
-            'Social Media & Marketing Lead': {
-                responsibilities: 'Managing the chapter\'s online presence, creating marketing strategies, content creation, and brand promotion across platforms.',
-                interests: 'Digital marketing, social media strategy, content creation, brand development, and community engagement.'
-            },
-            'Social Media & Marketing Co-Lead': {
-                responsibilities: 'Supporting marketing efforts, assisting with content creation, managing social media accounts, and helping grow community reach.',
-                interests: 'Content marketing, social media management, digital outreach, and community growth strategies.'
-            },
-            'Media & Graphics Lead': {
-                responsibilities: 'Creating visual content, designing event materials, maintaining brand consistency, conducting design workshops, and leading creative projects.',
-                interests: 'Graphic design, visual identity, creative software, user interface design, and digital art.'
-            },
-            'Media & Graphics Co-Lead': {
-                responsibilities: 'Supporting creative initiatives, assisting with design projects, contributing to visual content, and helping maintain brand standards.',
-                interests: 'Design principles, creative tools, visual communication, and collaborative design projects.'
-            },
-            'Event & Decor Lead': {
-                responsibilities: 'Planning and executing events, venue coordination, logistics management, decoration planning, and ensuring smooth event operations.',
-                interests: 'Event planning, project coordination, logistics management, creative decoration, and hospitality.'
-            },
-            'Event & Decor Co-Lead': {
-                responsibilities: 'Supporting event planning, assisting with logistics, coordinating decorations, and helping execute successful events.',
-                interests: 'Event coordination, creative planning, team collaboration, and organizational support.'
-            }
-        };
-
-        // Get member ID from URL parameters
-        function getMemberIdFromUrl() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('id');
-        }
-
-        // Load member profile
-        function loadMemberProfile() {
-            const memberId = getMemberIdFromUrl();
-            
-            // Use the centralized function from members.js
-            const member = getMemberById(memberId);
-            
-            if (!member) {
-                // Show error state
-                document.getElementById('loading-section').classList.add('hidden');
-                document.getElementById('error-section').classList.remove('hidden');
-                return;
-            }
-            
-            // Update page title
-            document.getElementById('page-title').textContent = `${member.name} | GDG Wah Campus`;
-            
-            // Populate member information
-            document.getElementById('member-image').src = member.imageUrl;
-            document.getElementById('member-image').alt = member.name;
-            document.getElementById('member-name').textContent = member.name;
-            document.getElementById('member-role').textContent = member.role;
-            document.getElementById('member-team').textContent = `${member.team} Team`;
-            document.getElementById('member-bio').innerHTML = member.bio;
-
-            // Add role-based details
-            const roleInfo = roleDetails[member.role];
-            if (roleInfo) {
-                document.getElementById('member-responsibilities').textContent = roleInfo.responsibilities;
-                document.getElementById('member-interests').textContent = roleInfo.interests;
-            } else {
-                // Default content for roles not in roleDetails
-                document.getElementById('member-responsibilities').textContent = `As ${member.role}, this member contributes significantly to the ${member.team} team's success and helps drive our community initiatives forward.`;
-                document.getElementById('member-interests').textContent = `Passionate about technology, community building, and contributing to the growth of GDG Wah Campus through the ${member.team} team.`;
-            }
-
-            // Add social links
-            const socialLinksContainer = document.getElementById('social-links');
-            socialLinksContainer.innerHTML = '';
-            
-            member.socials.forEach(social => {
-                const socialLink = document.createElement('a');
-                socialLink.href = social.url;
-                socialLink.target = '_blank';
-                socialLink.rel = 'noopener noreferrer';
-                socialLink.className = 'social-icon text-gray-600 hover:text-blue-600 p-3 bg-white hover:bg-blue-50 rounded-full shadow-md transition-all duration-300';
-                socialLink.innerHTML = socialIconMap[social.type] || '';
-                socialLinksContainer.appendChild(socialLink);
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
-
-            // Re-initialize lucide icons
-            lucide.createIcons();
-
-            // Show profile content and hide loading
-            document.getElementById('loading-section').classList.add('hidden');
-            document.getElementById('profile-content').classList.remove('hidden');
         }
 
         // Initialize page
