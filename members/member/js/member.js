@@ -96,45 +96,73 @@ function getMemberIdFromUrl() {
     return urlParams.get('id');
 }
 
+// Safe element access helper
+function safeSetContent(elementId, content, isHTML = false) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        if (isHTML) {
+            element.innerHTML = content;
+        } else {
+            element.textContent = content;
+        }
+        return true;
+    }
+    console.warn(`Element with id '${elementId}' not found`);
+    return false;
+}
+
+// Safe query selector helper
+function safeQuerySelector(selector, callback) {
+    const element = document.querySelector(selector);
+    if (element && callback) {
+        callback(element);
+        return true;
+    }
+    if (!element) {
+        console.warn(`Element with selector '${selector}' not found`);
+    }
+    return false;
+}
+
 // Load member profile with enhanced details
 function loadMemberProfile() {
     const memberId = getMemberIdFromUrl();
     
+    console.log('Loading member profile for ID:', memberId);
+    
     // Check if getMemberById is available (from members.js)
     if (typeof getMemberById !== 'function') {
         console.error('getMemberById function not found. Make sure members.js is loaded first.');
-        document.getElementById('loading-section').classList.add('hidden');
-        document.getElementById('error-section').classList.remove('hidden');
+        showError();
         return;
     }
     
     const member = getMemberById(memberId);
     
     if (!member) {
-        // Show error state
-        document.getElementById('loading-section').classList.add('hidden');
-        document.getElementById('error-section').classList.remove('hidden');
+        console.error('Member not found for ID:', memberId);
+        showError();
         return;
     }
     
-    // Update page title
-    document.getElementById('page-title').textContent = `${member.name} | GDG Wah Campus`;
+    console.log('Member data loaded:', member);
     
-    // Populate basic member information
+    // Show profile content first (unhide it)
+    const loadingSection = document.getElementById('loading-section');
+    const profileContent = document.getElementById('profile-content');
+    
+    if (loadingSection) loadingSection.classList.add('hidden');
+    if (profileContent) profileContent.classList.remove('hidden');
+    
+    // Now populate the data
     populateBasicInfo(member);
-    
-    // Populate detailed member information
     populateDetailedInfo(member);
-    
-    // Add role-based details
     populateRoleDetails(member);
-    
-    // Add social links
     populateSocialLinks(member);
     
-    // Show profile content with animation
-    document.getElementById('loading-section').classList.add('hidden');
-    document.getElementById('profile-content').classList.remove('hidden');
+    // Update page title
+    document.title = `${member.name} | GDG Wah Campus`;
+    safeSetContent('page-title', `${member.name} | GDG Wah Campus`);
     
     // Add fade-in animation
     setTimeout(() => {
@@ -143,20 +171,40 @@ function loadMemberProfile() {
             profileCard.classList.add('fade-in');
         }
     }, 100);
+    
+    // Re-initialize lucide icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// Show error state
+function showError() {
+    const loadingSection = document.getElementById('loading-section');
+    const errorSection = document.getElementById('error-section');
+    
+    if (loadingSection) loadingSection.classList.add('hidden');
+    if (errorSection) errorSection.classList.remove('hidden');
 }
 
 // Populate basic member information
 function populateBasicInfo(member) {
-    document.getElementById('member-image').src = member.imageUrl;
-    document.getElementById('member-image').alt = member.name;
-    document.getElementById('member-name').textContent = member.name;
-    document.getElementById('member-role').textContent = member.role;
-    document.getElementById('member-team').textContent = `${member.team} Team`;
-    document.getElementById('member-bio').innerHTML = member.bio || '<p>Bio coming soon...</p>';
+    // Profile image
+    const memberImage = document.getElementById('member-image');
+    if (memberImage) {
+        memberImage.src = member.imageUrl;
+        memberImage.alt = member.name;
+    }
     
-    // Contact email
+    // Basic info
+    safeSetContent('member-name', member.name);
+    safeSetContent('member-role', member.role);
+    safeSetContent('member-team', `${member.team} Team`);
+    safeSetContent('member-bio', member.bio || '<p>Bio coming soon...</p>', true);
+    
+    // Contact email link
     const contactEmail = document.getElementById('contact-email');
-    if (member.email) {
+    if (contactEmail && member.email) {
         contactEmail.href = `mailto:${member.email}`;
     }
 }
@@ -164,46 +212,56 @@ function populateBasicInfo(member) {
 // Populate detailed member information
 function populateDetailedInfo(member) {
     // Location
-    const locationElement = document.getElementById('member-location').querySelector('span');
-    locationElement.textContent = member.location || 'Wah Cantt, Pakistan';
+    safeQuerySelector('#member-location span', (el) => {
+        el.textContent = member.location || 'Wah Cantt, Pakistan';
+    });
     
     // Department and University
-    document.getElementById('member-department').textContent = member.department || 'Computer Science';
-    document.getElementById('member-university').textContent = member.university || 'University of Wah';
+    safeSetContent('member-department', member.department || 'Computer Science');
+    safeSetContent('member-university', member.university || 'University of Wah');
     
     // Membership details
-    document.getElementById('membership-type').textContent = member.membershipType || 'Member';
+    safeSetContent('membership-type', member.membershipType || 'Member');
     
-    // Use formatDate if available from members.js
+    // Joining date - use formatDate if available
     const joiningDateText = typeof formatDate === 'function' ? 
         formatDate(member.joiningDate || '2023-01-01') : 
         member.joiningDate || '2023-01-01';
-    document.getElementById('joining-date').textContent = joiningDateText;
+    safeSetContent('joining-date', joiningDateText);
     
-    document.getElementById('club-name').textContent = member.club || 'GDG Wah Campus';
+    safeSetContent('club-name', member.club || 'GDG Wah Campus');
     
     // Membership duration
     const duration = typeof getMembershipDuration === 'function' ? 
         getMembershipDuration(member.joiningDate || '2023-01-01') : 
         '1+ years';
-    document.getElementById('membership-duration').textContent = duration;
-    document.getElementById('team-role').textContent = member.role.split(' ').pop(); // Last word of role
+    safeSetContent('membership-duration', duration);
+    
+    // Team role (last word of role)
+    const roleWord = member.role.split(' ').pop();
+    safeSetContent('team-role', roleWord);
     
     // Contact information
-    const contactEmailInfo = document.getElementById('contact-email-info');
-    const contactPhoneInfo = document.getElementById('contact-phone-info');
-    const contactLocationInfo = document.getElementById('contact-location-info');
-    
     if (member.email) {
-        contactEmailInfo.innerHTML = `<i data-lucide="mail" class="w-4 h-4 mr-2"></i><span class="text-sm">${member.email}</span>`;
+        safeSetContent('contact-email-info', 
+            `<i data-lucide="mail" class="w-4 h-4 mr-2"></i><span class="text-sm">${member.email}</span>`, 
+            true
+        );
     }
+    
     if (member.phone) {
-        contactPhoneInfo.innerHTML = `<i data-lucide="phone" class="w-4 h-4 mr-2"></i><span class="text-sm">${member.phone}</span>`;
+        safeSetContent('contact-phone-info', 
+            `<i data-lucide="phone" class="w-4 h-4 mr-2"></i><span class="text-sm">${member.phone}</span>`, 
+            true
+        );
     }
-    contactLocationInfo.querySelector('span').textContent = member.location || 'Wah Cantt, Pakistan';
+    
+    safeQuerySelector('#contact-location-info span', (el) => {
+        el.textContent = member.location || 'Wah Cantt, Pakistan';
+    });
     
     // Primary role
-    document.getElementById('primary-role').textContent = member.role;
+    safeSetContent('primary-role', member.role);
 }
 
 // Populate role-specific details
@@ -211,36 +269,40 @@ function populateRoleDetails(member) {
     const roleInfo = roleDetails[member.role];
     
     if (roleInfo) {
-        document.getElementById('key-responsibilities').textContent = roleInfo.responsibilities;
+        safeSetContent('key-responsibilities', roleInfo.responsibilities);
     } else {
-        // Default content for roles not in roleDetails
-        document.getElementById('key-responsibilities').textContent = 
-            `As ${member.role}, this member contributes significantly to the ${member.team} team's success and helps drive our community initiatives forward.`;
+        safeSetContent('key-responsibilities', 
+            `As ${member.role}, this member contributes significantly to the ${member.team} team's success and helps drive our community initiatives forward.`
+        );
     }
     
     // Populate expertise tags
     const expertiseContainer = document.getElementById('member-expertise');
-    const expertise = member.expertise || ['Technology Enthusiast', 'Team Player', 'Problem Solver'];
-    
-    expertiseContainer.innerHTML = expertise.map(skill => 
-        `<span class="expertise-tag">${skill}</span>`
-    ).join('');
+    if (expertiseContainer) {
+        const expertise = member.expertise || ['Technology Enthusiast', 'Team Player', 'Problem Solver'];
+        expertiseContainer.innerHTML = expertise.map(skill => 
+            `<span class="expertise-tag">${skill}</span>`
+        ).join('');
+    }
     
     // Populate achievements
     const achievementsContainer = document.getElementById('member-achievements');
-    const achievements = member.achievements || ['Active community member', 'Participated in team projects', 'Contributing to GDG growth'];
-    
-    achievementsContainer.innerHTML = achievements.map(achievement => 
-        `<div class="achievement-item">
-            <i data-lucide="award" class="flex-shrink-0"></i>
-            <span>${achievement}</span>
-        </div>`
-    ).join('');
+    if (achievementsContainer) {
+        const achievements = member.achievements || ['Active community member', 'Participated in team projects', 'Contributing to GDG growth'];
+        achievementsContainer.innerHTML = achievements.map(achievement => 
+            `<div class="achievement-item">
+                <i data-lucide="award" class="flex-shrink-0"></i>
+                <span>${achievement}</span>
+            </div>`
+        ).join('');
+    }
 }
 
 // Populate social links
 function populateSocialLinks(member) {
     const socialLinksContainer = document.getElementById('social-links');
+    if (!socialLinksContainer) return;
+    
     socialLinksContainer.innerHTML = '';
     
     if (member.socials && member.socials.length > 0) {
@@ -258,18 +320,12 @@ function populateSocialLinks(member) {
             socialLinksContainer.appendChild(socialLink);
         });
     } else {
-        // Show placeholder if no social links
         socialLinksContainer.innerHTML = `
             <div class="text-white text-opacity-70 text-sm">
                 <i data-lucide="globe" class="w-4 h-4 mr-2 inline"></i>
                 Social links coming soon
             </div>
         `;
-    }
-    
-    // Re-initialize lucide icons for social links
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
     }
 }
 
@@ -281,10 +337,8 @@ function initializeInteractiveElements() {
         item.addEventListener('click', function() {
             const text = this.textContent.trim();
             if (text.includes('@')) {
-                // Email
                 window.location.href = `mailto:${text}`;
             } else if (text.includes('+')) {
-                // Phone
                 window.location.href = `tel:${text}`;
             }
         });
@@ -354,6 +408,8 @@ function initializeScrollAnimations() {
 
 // Initialize page functionality
 function initializePage() {
+    console.log('Initializing member profile page...');
+    
     loadMemberProfile();
     initializeInteractiveElements();
     initializeScrollAnimations();
@@ -373,10 +429,11 @@ function initializePage() {
     });
 }
 
-// Wait for members.js to load before initializing
+// Wait for members.js to load and DOM to be ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializePage);
 } else {
-    // DOM is already loaded, initialize immediately
-    initializePage();
+    // DOM is already loaded
+    // Add a small delay to ensure members.js is fully loaded
+    setTimeout(initializePage, 100);
 }
