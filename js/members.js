@@ -5,7 +5,7 @@ const membersData = {
         name: "Dr. Kashif Ayyub",
         role: "Faculty Head",
         team: "Executives",
-        imageUrl: "https://placehold.co/256x256/4285F4/FFFFFF?text=Kashif",
+        imageUrl: "/assets/images/M001.png",
         bio: "<p>Dr. Kashif Ayyub serves as the Faculty Head, guiding the GDG community with his extensive experience and passion for technology. With over 15 years of experience in computer science and software engineering, he has been instrumental in bridging the gap between academia and industry. His research interests include machine learning, software engineering practices, and educational technology.</p><p>Under his guidance, GDG Wah Campus has grown to become one of the most active developer communities in the region, fostering innovation and collaboration among students and professionals alike.</p>",
         joiningDate: "2025-09-11",
         membershipStatus: "Active",
@@ -50,7 +50,7 @@ const membersData = {
         name: "Fakhir Hassan",
         role: "Chairperson",
         team: "Executives",
-        imageUrl: "https://placehold.co/256x256/F4B400/FFFFFF?text=Fakhir",
+        imageUrl: "/assets/images/M003.png",
         bio: "<p>Fakhir Hassan, as the Chairperson, provides strategic direction and leadership to the GDG chapter. With a strong background in computer science and exceptional organizational skills, he ensures that all chapter activities align with the community's goals and Google Developer Group's mission.</p><p>His vision has helped establish GDG Wah Campus as a hub for innovation, learning, and professional development in the region.</p>",
         joiningDate: "2025-09-11",
         membershipStatus: "Active",
@@ -72,7 +72,7 @@ const membersData = {
         name: "Muhammad Ali Saqib",
         role: "Operation Manager",
         team: "Executives",
-        imageUrl: "https://placehold.co/256x256/0F9D58/FFFFFF?text=Muhammad",
+        imageUrl: "/assets/images/M004.png",
         bio: "<p>Muhammad Ali Saqib manages the chapter's operations, ensuring that all events and activities run smoothly. With exceptional organizational and coordination skills, he handles logistics, scheduling, and resource management for all GDG activities.</p>",
         joiningDate: "2025-09-11",
         membershipStatus: "Active",
@@ -111,39 +111,40 @@ const membersData = {
         ]
     },
     "GDG-M006": {
-    "name": "Saad Ali",
-    "role": "Technical Lead",
-    "team": "Executives",
-    "imageUrl": "/assets/images/M006.png",
-    "bio": "<p>A Computer Science student at COMSATS with 4+ years of experience in software development. Passionate about AI/ML, Saad has built projects like a context-aware AI (BookBuddy) and a brain tumor segmentation tool, holding certifications from Harvard, Google, and IBM.</p><p>He is also a game developer using Unreal Engine 5 and the co-founder of Aviskens, an AI-focused startup. Outside of tech, he is an avid chess player, storyteller, and calisthenics enthusiast.</p>",
-    "joiningDate": "2025-09-11",
-    "membershipStatus": "Active",
-    "membershipType": "Technical Lead",
-    "club": "GDG Wah Campus",
-    "department": "Computer Science",
-    "university": "Comsats University Islamabad, Wah Campus",
-    "expertise": [
-        "AI/ML",
-        "Game Development (Unreal Engine 5)",
-        "Python",
-        "C++",
-        "Java",
-        "DBMS (MySQL, MS Access)"
-    ],
-    "achievements": [
-        "Delivered 50+ real-world software solutions",
-        "Co-founder of Aviskens, an AI-focused startup",
-        "Developed BookBuddy (context-aware AI)",
-        "Built a brain tumor segmentation tool using U-Net & Gemini AI"
-    ],
-    "email": "oscurprof@gmail.com",
-    "phone": "+92-303-4567890",
-    "location": "Wah Cantt, Pakistan",
-    "socials": [
-        { "type": "linkedin", "url": "https://linkedin.com/in/oscurprof" },
-        { "type": "github", "url": "https://github.com/oscurprof" }
-    ]
-  },
+        name: "Saad Ali",
+        role: "Technical Lead",
+        team: "Executives",
+        imageUrl: "/assets/images/M006.png",
+        bio: "<p>Saad Ali leads the technical direction of the chapter, mentoring members and leading workshops on cutting-edge technologies. As an experienced full-stack developer, he specializes in modern web technologies, cloud computing, and mobile app development.</p><p>His technical expertise and passion for teaching have made him a beloved mentor within the community, helping numerous students transition from beginners to skilled developers.</p>",
+        joiningDate: "2025-09-11",
+        membershipStatus: "Active",
+        membershipType: "Technical Lead",
+        club: "GDG Wah Campus",
+        department: "Software Engineering",
+        university: "Comsats University Islamabd, Wah Campus",
+        expertise: 
+        [
+            "AI/ML",
+            "Game Development (Unreal Engine 5)",
+            "Python",
+            "C++",
+            "Java",
+            "DBMS (MySQL, MS Access)"
+        ],
+        achievements: 
+        [   
+            "Conducted 20+ technical workshops",
+            "Mentored 50+ developers",
+            "Built 10+ open-source projects"
+        ],
+        email: "oscurprof@gmail.com",
+        phone: "+92-315-7236255",
+        location: "Wah Cantt, Pakistan",
+        socials: [
+            { type: "linkedin", url: "https://linkedin.com/in/oscurprof" },
+            { type: "github", url: "https://github.com/oscurprof" }
+        ]
+    },
     "GDG-M007": {
         name: "Alisha Fatima",
         role: "Women in Tech",
