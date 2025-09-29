@@ -115,7 +115,7 @@ const membersData = {
         role: "Technical Lead",
         team: "Executives",
         imageUrl: "/assets/images/M006.png",
-        bio: "<p>Saad Ali leads the technical direction of the chapter, mentoring members and leading workshops on cutting-edge technologies. As an experienced full-stack developer, he specializes in modern web technologies, cloud computing, and mobile app development.</p><p>His technical expertise and passion for teaching have made him a beloved mentor within the community, helping numerous students transition from beginners to skilled developers.</p>",
+        bio: "<p>Saad Ali leads the technical direction of the chapter, mentoring members and leading workshops on cutting-edge technologies. He specializes in game development using Unreal Engine 5, AI Solution Developments, Software & DBMS development. </p><p>His technical expertise and passion for teaching have made him a beloved mentor within the community, helping numerous students transition from beginners to skilled developers.</p>",
         joiningDate: "2025-09-11",
         membershipStatus: "Active",
         membershipType: "Technical Lead",
