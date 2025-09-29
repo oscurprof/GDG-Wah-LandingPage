@@ -7,87 +7,35 @@ const socialIconMap = {
     twitter: 'twitter',
     instagram: 'instagram',
     dribbble: 'dribbble',
-    facebook: 'facebook'
+    facebook: 'facebook',
+    youtube: 'youtube',
+    behance: 'square'
 };
 
-// Role-based responsibilities and interests
+// Role-based responsibilities
 const roleDetails = {
-    'Faculty Head': {
-        responsibilities: 'Providing academic oversight, guiding strategic initiatives, fostering partnerships with educational institutions, and ensuring alignment with university policies.',
-        interests: 'Educational technology, curriculum development, academic research, and building bridges between academia and industry.'
-    },
-    'Campus Lead': {
-        responsibilities: 'Leading community initiatives, organizing events, fostering partnerships, and maintaining the overall vision of GDG Wah Campus.',
-        interests: 'Community building, project management, technology leadership, and creating inclusive environments for learning.'
-    },
-    'Chairperson': {
-        responsibilities: 'Providing strategic direction, overseeing executive decisions, coordinating between teams, and representing the chapter in official matters.',
-        interests: 'Strategic planning, leadership development, organizational management, and stakeholder relations.'
-    },
-    'Technical Lead': {
-        responsibilities: 'Leading the technical direction of the chapter, mentoring members, organizing technical workshops, and overseeing technical projects.',
-        interests: 'Software engineering, emerging technologies, technical mentorship, and hands-on development.'
-    },
-    'Operation Manager': {
-        responsibilities: 'Managing day-to-day operations, coordinating logistics, ensuring smooth execution of events, and maintaining organizational efficiency.',
-        interests: 'Operations management, process optimization, logistics coordination, and organizational efficiency.'
-    },
-    'General Secretary': {
-        responsibilities: 'Handling administrative tasks, maintaining records, managing communications, and supporting organizational documentation.',
-        interests: 'Administration, documentation, communication management, and organizational support.'
-    },
-    'Women in Tech': {
-        responsibilities: 'Championing diversity and inclusion, empowering female members, organizing women-focused events, and promoting gender equality in tech.',
-        interests: 'Diversity and inclusion, women empowerment, community outreach, and creating supportive environments.'
-    },
-    'Treasurer': {
-        responsibilities: 'Managing chapter finances, budgeting for events, tracking expenses, and ensuring financial transparency and accountability.',
-        interests: 'Financial management, budgeting, resource allocation, and financial planning.'
-    },
-    'AI & Data Science Lead': {
-        responsibilities: 'Leading AI and data science initiatives, organizing study sessions, mentoring members in AI technologies, and coordinating research projects.',
-        interests: 'Artificial intelligence, machine learning, data science, neural networks, and research methodologies.'
-    },
-    'AI & Data Science Co-Lead': {
-        responsibilities: 'Supporting AI and data science initiatives, assisting with workshops, mentoring junior members, and contributing to research projects.',
-        interests: 'Machine learning, data analysis, AI applications, and collaborative research.'
-    },
-    'Web & App Lead': {
-        responsibilities: 'Leading web and mobile development projects, organizing development workshops, maintaining community web presence, and guiding technical projects.',
-        interests: 'Full-stack development, mobile app development, modern frameworks, and user experience design.'
-    },
-    'Web & App Co-Lead': {
-        responsibilities: 'Supporting web and app development initiatives, assisting with technical workshops, and contributing to development projects.',
-        interests: 'Frontend/backend development, mobile technologies, web frameworks, and collaborative development.'
-    },
-    'AI Research Lead': {
-        responsibilities: 'Leading AI research initiatives, coordinating research projects, organizing academic collaborations, and exploring new AI frontiers.',
-        interests: 'AI research, academic publications, cutting-edge algorithms, and theoretical foundations of AI.'
-    },
-    'Social Media & Marketing Lead': {
-        responsibilities: 'Managing the chapter\'s online presence, creating marketing strategies, content creation, and brand promotion across platforms.',
-        interests: 'Digital marketing, social media strategy, content creation, brand development, and community engagement.'
-    },
-    'Social Media & Marketing Co-Lead': {
-        responsibilities: 'Supporting marketing efforts, assisting with content creation, managing social media accounts, and helping grow community reach.',
-        interests: 'Content marketing, social media management, digital outreach, and community growth strategies.'
-    },
-    'Media & Graphics Lead': {
-        responsibilities: 'Creating visual content, designing event materials, maintaining brand consistency, conducting design workshops, and leading creative projects.',
-        interests: 'Graphic design, visual identity, creative software, user interface design, and digital art.'
-    },
-    'Media & Graphics Co-Lead': {
-        responsibilities: 'Supporting creative initiatives, assisting with design projects, contributing to visual content, and helping maintain brand standards.',
-        interests: 'Design principles, creative tools, visual communication, and collaborative design projects.'
-    },
-    'Event & Decor Lead': {
-        responsibilities: 'Planning and executing events, venue coordination, logistics management, decoration planning, and ensuring smooth event operations.',
-        interests: 'Event planning, project coordination, logistics management, creative decoration, and hospitality.'
-    },
-    'Event & Decor Co-Lead': {
-        responsibilities: 'Supporting event planning, assisting with logistics, coordinating decorations, and helping execute successful events.',
-        interests: 'Event coordination, creative planning, team collaboration, and organizational support.'
-    }
+    'Faculty Head': 'Providing academic oversight, guiding strategic initiatives, fostering partnerships with educational institutions, and ensuring alignment with university policies.',
+    'Campus Lead': 'Leading community initiatives, organizing events, fostering partnerships, and maintaining the overall vision of GDG Wah Campus.',
+    'Chairperson': 'Providing strategic direction, overseeing executive decisions, coordinating between teams, and representing the chapter in official matters.',
+    'Technical Lead': 'Leading the technical direction of the chapter, mentoring members, organizing technical workshops, and overseeing technical projects.',
+    'Operation Manager': 'Managing day-to-day operations, coordinating logistics, ensuring smooth execution of events, and maintaining organizational efficiency.',
+    'General Secretary': 'Handling administrative tasks, maintaining records, managing communications, and supporting organizational documentation.',
+    'General Secretory': 'Handling administrative tasks, maintaining records, managing communications, and supporting organizational documentation.',
+    'Women in Tech': 'Championing diversity and inclusion, empowering female members, organizing women-focused events, and promoting gender equality in tech.',
+    'Treasurer': 'Managing chapter finances, budgeting for events, tracking expenses, and ensuring financial transparency and accountability.',
+    'AI & Data Science Lead': 'Leading AI and data science initiatives, organizing study sessions, mentoring members in AI technologies, and coordinating research projects.',
+    'AI & Data Science Co-Lead': 'Supporting AI and data science initiatives, assisting with workshops, mentoring junior members, and contributing to research projects.',
+    'Al & Data Science Lead': 'Leading AI and data science initiatives, organizing study sessions, mentoring members in AI technologies, and coordinating research projects.',
+    'Al & Data Science Co-Lead': 'Supporting AI and data science initiatives, assisting with workshops, mentoring junior members, and contributing to research projects.',
+    'Web & App Lead': 'Leading web and mobile development projects, organizing development workshops, maintaining community web presence, and guiding technical projects.',
+    'Web & App Co-Lead': 'Supporting web and app development initiatives, assisting with technical workshops, and contributing to development projects.',
+    'AI Research Lead': 'Leading AI research initiatives, coordinating research projects, organizing academic collaborations, and exploring new AI frontiers.',
+    'Social Media & Marketing Lead': 'Managing the chapter\'s online presence, creating marketing strategies, content creation, and brand promotion across platforms.',
+    'Social Media & Marketing Co-Lead': 'Supporting marketing efforts, assisting with content creation, managing social media accounts, and helping grow community reach.',
+    'Media & Graphics Lead': 'Creating visual content, designing event materials, maintaining brand consistency, conducting design workshops, and leading creative projects.',
+    'Media & Graphics Co-Lead': 'Supporting creative initiatives, assisting with design projects, contributing to visual content, and helping maintain brand standards.',
+    'Event & Decor Lead': 'Planning and executing events, venue coordination, logistics management, decoration planning, and ensuring smooth event operations.',
+    'Event & Decor Co-Lead': 'Supporting event planning, assisting with logistics, coordinating decorations, and helping execute successful events.'
 };
 
 // Get member ID from URL parameters
@@ -96,43 +44,26 @@ function getMemberIdFromUrl() {
     return urlParams.get('id');
 }
 
-// Safe element access helper
-function safeSetContent(elementId, content, isHTML = false) {
-    const element = document.getElementById(elementId);
-    if (element) {
+// Safe element update
+function safeUpdate(id, content, isHTML = false) {
+    const el = document.getElementById(id);
+    if (el) {
         if (isHTML) {
-            element.innerHTML = content;
+            el.innerHTML = content;
         } else {
-            element.textContent = content;
+            el.textContent = content;
         }
-        return true;
     }
-    console.warn(`Element with id '${elementId}' not found`);
-    return false;
 }
 
-// Safe query selector helper
-function safeQuerySelector(selector, callback) {
-    const element = document.querySelector(selector);
-    if (element && callback) {
-        callback(element);
-        return true;
-    }
-    if (!element) {
-        console.warn(`Element with selector '${selector}' not found`);
-    }
-    return false;
-}
-
-// Load member profile with enhanced details
+// Load member profile
 function loadMemberProfile() {
     const memberId = getMemberIdFromUrl();
     
-    console.log('Loading member profile for ID:', memberId);
+    console.log('Loading member:', memberId);
     
-    // Check if getMemberById is available (from members.js)
     if (typeof getMemberById !== 'function') {
-        console.error('getMemberById function not found. Make sure members.js is loaded first.');
+        console.error('getMemberById not found');
         showError();
         return;
     }
@@ -140,300 +71,166 @@ function loadMemberProfile() {
     const member = getMemberById(memberId);
     
     if (!member) {
-        console.error('Member not found for ID:', memberId);
+        console.error('Member not found');
         showError();
         return;
     }
     
-    console.log('Member data loaded:', member);
+    console.log('Member loaded:', member);
     
-    // Show profile content first (unhide it)
-    const loadingSection = document.getElementById('loading-section');
-    const profileContent = document.getElementById('profile-content');
+    // Show content
+    document.getElementById('loading-section')?.classList.add('hidden');
+    document.getElementById('profile-content')?.classList.remove('hidden');
     
-    if (loadingSection) loadingSection.classList.add('hidden');
-    if (profileContent) profileContent.classList.remove('hidden');
-    
-    // Now populate the data
-    populateBasicInfo(member);
-    populateDetailedInfo(member);
-    populateRoleDetails(member);
-    populateSocialLinks(member);
+    // Populate all sections
+    populateHeader(member);
+    populateStats(member);
+    populateAbout(member);
+    populateExpertise(member);
+    populateAchievements(member);
+    populateResponsibilities(member);
+    populateSidebar(member);
     
     // Update page title
     document.title = `${member.name} | GDG Wah Campus`;
-    safeSetContent('page-title', `${member.name} | GDG Wah Campus`);
     
-    // Add fade-in animation
-    setTimeout(() => {
-        const profileCard = document.querySelector('.profile-card');
-        if (profileCard) {
-            profileCard.classList.add('fade-in');
-        }
-    }, 100);
-    
-    // Re-initialize lucide icons
+    // Initialize icons
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
 }
 
-// Show error state
 function showError() {
-    const loadingSection = document.getElementById('loading-section');
-    const errorSection = document.getElementById('error-section');
-    
-    if (loadingSection) loadingSection.classList.add('hidden');
-    if (errorSection) errorSection.classList.remove('hidden');
+    document.getElementById('loading-section')?.classList.add('hidden');
+    document.getElementById('error-section')?.classList.remove('hidden');
 }
 
-// Populate basic member information
-function populateBasicInfo(member) {
-    // Profile image
-    const memberImage = document.getElementById('member-image');
-    if (memberImage) {
-        memberImage.src = member.imageUrl;
-        memberImage.alt = member.name;
+function populateHeader(member) {
+    const img = document.getElementById('member-image');
+    if (img) {
+        img.src = member.imageUrl;
+        img.alt = member.name;
     }
     
-    // Basic info
-    safeSetContent('member-name', member.name);
-    safeSetContent('member-role', member.role);
-    safeSetContent('member-team', `${member.team} Team`);
-    safeSetContent('member-bio', member.bio || '<p>Bio coming soon...</p>', true);
+    safeUpdate('member-name', member.name);
+    safeUpdate('member-role', member.role);
+    safeUpdate('member-team', `${member.team} Team`);
     
-    // Contact email link
-    const contactEmail = document.getElementById('contact-email');
-    if (contactEmail && member.email) {
-        contactEmail.href = `mailto:${member.email}`;
-    }
-}
-
-// Populate detailed member information
-function populateDetailedInfo(member) {
-    // Location
-    safeQuerySelector('#member-location span', (el) => {
-        el.textContent = member.location || 'Wah Cantt, Pakistan';
-    });
-    
-    // Department and University
-    safeSetContent('member-department', member.department || 'Computer Science');
-    safeSetContent('member-university', member.university || 'University of Wah');
-    
-    // Membership details
-    safeSetContent('membership-type', member.membershipType || 'Member');
-    
-    // Joining date - use formatDate if available
-    const joiningDateText = typeof formatDate === 'function' ? 
-        formatDate(member.joiningDate || '2023-01-01') : 
-        member.joiningDate || '2023-01-01';
-    safeSetContent('joining-date', joiningDateText);
-    
-    safeSetContent('club-name', member.club || 'GDG Wah Campus');
-    
-    // Membership duration
-    const duration = typeof getMembershipDuration === 'function' ? 
-        getMembershipDuration(member.joiningDate || '2023-01-01') : 
-        '1+ years';
-    safeSetContent('membership-duration', duration);
-    
-    // Team role (last word of role)
-    const roleWord = member.role.split(' ').pop();
-    safeSetContent('team-role', roleWord);
-    
-    // Contact information
-    if (member.email) {
-        safeSetContent('contact-email-info', 
-            `<i data-lucide="mail" class="w-4 h-4 mr-2"></i><span class="text-sm">${member.email}</span>`, 
-            true
-        );
-    }
-    
-    if (member.phone) {
-        safeSetContent('contact-phone-info', 
-            `<i data-lucide="phone" class="w-4 h-4 mr-2"></i><span class="text-sm">${member.phone}</span>`, 
-            true
-        );
-    }
-    
-    safeQuerySelector('#contact-location-info span', (el) => {
-        el.textContent = member.location || 'Wah Cantt, Pakistan';
-    });
-    
-    // Primary role
-    safeSetContent('primary-role', member.role);
-}
-
-// Populate role-specific details
-function populateRoleDetails(member) {
-    const roleInfo = roleDetails[member.role];
-    
-    if (roleInfo) {
-        safeSetContent('key-responsibilities', roleInfo.responsibilities);
-    } else {
-        safeSetContent('key-responsibilities', 
-            `As ${member.role}, this member contributes significantly to the ${member.team} team's success and helps drive our community initiatives forward.`
-        );
-    }
-    
-    // Populate expertise tags
-    const expertiseContainer = document.getElementById('member-expertise');
-    if (expertiseContainer) {
-        const expertise = member.expertise || ['Technology Enthusiast', 'Team Player', 'Problem Solver'];
-        expertiseContainer.innerHTML = expertise.map(skill => 
-            `<span class="expertise-tag">${skill}</span>`
-        ).join('');
-    }
-    
-    // Populate achievements
-    const achievementsContainer = document.getElementById('member-achievements');
-    if (achievementsContainer) {
-        const achievements = member.achievements || ['Active community member', 'Participated in team projects', 'Contributing to GDG growth'];
-        achievementsContainer.innerHTML = achievements.map(achievement => 
-            `<div class="achievement-item">
-                <i data-lucide="award" class="flex-shrink-0"></i>
-                <span>${achievement}</span>
-            </div>`
-        ).join('');
-    }
-}
-
-// Populate social links
-function populateSocialLinks(member) {
-    const socialLinksContainer = document.getElementById('social-links');
-    if (!socialLinksContainer) return;
-    
-    socialLinksContainer.innerHTML = '';
-    
-    if (member.socials && member.socials.length > 0) {
-        member.socials.forEach(social => {
-            const socialLink = document.createElement('a');
-            socialLink.href = social.url;
-            socialLink.target = '_blank';
-            socialLink.rel = 'noopener noreferrer';
-            socialLink.className = 'social-icon';
-            socialLink.setAttribute('aria-label', `${member.name} on ${social.type}`);
-            
-            const iconName = socialIconMap[social.type] || 'link';
-            socialLink.innerHTML = `<i data-lucide="${iconName}" class="w-5 h-5"></i>`;
-            
-            socialLinksContainer.appendChild(socialLink);
-        });
-    } else {
-        socialLinksContainer.innerHTML = `
-            <div class="text-white text-opacity-70 text-sm">
-                <i data-lucide="globe" class="w-4 h-4 mr-2 inline"></i>
-                Social links coming soon
-            </div>
+    const locationEl = document.getElementById('member-location');
+    if (locationEl) {
+        locationEl.innerHTML = `
+            <i data-lucide="map-pin" class="w-4 h-4"></i>
+            <span class="font-medium">${member.location || 'Wah Cantt, Pakistan'}</span>
         `;
     }
 }
 
-// Add smooth scrolling and interactive elements
-function initializeInteractiveElements() {
-    // Add click handlers for contact information
-    const contactItems = document.querySelectorAll('.contact-info-item');
-    contactItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const text = this.textContent.trim();
-            if (text.includes('@')) {
-                window.location.href = `mailto:${text}`;
-            } else if (text.includes('+')) {
-                window.location.href = `tel:${text}`;
-            }
-        });
-    });
+function populateStats(member) {
+    // Membership duration
+    const duration = typeof getMembershipDuration === 'function' 
+        ? getMembershipDuration(member.joiningDate || '2023-01-01')
+        : '1+ yrs';
+    safeUpdate('membership-duration', duration);
     
-    // Add copy to clipboard functionality
-    const copyableElements = document.querySelectorAll('[data-copy]');
-    copyableElements.forEach(element => {
-        element.addEventListener('click', async function() {
-            const textToCopy = this.dataset.copy || this.textContent;
-            try {
-                await navigator.clipboard.writeText(textToCopy);
-                showTooltip(this, 'Copied!');
-            } catch (err) {
-                console.error('Failed to copy text: ', err);
-            }
-        });
-    });
+    // Team role
+    const roleWord = member.role.split(' ').pop();
+    safeUpdate('team-role', roleWord);
     
-    // Add hover effects for achievement items
-    const achievementItems = document.querySelectorAll('.achievement-item');
-    achievementItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateX(8px)';
-        });
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateX(0)';
-        });
-    });
+    // Expertise count
+    const expertiseCount = member.expertise ? member.expertise.length : 0;
+    safeUpdate('expertise-count', expertiseCount);
 }
 
-// Show tooltip
-function showTooltip(element, message) {
-    const tooltip = document.createElement('div');
-    tooltip.className = 'absolute bg-gray-800 text-white px-2 py-1 rounded text-xs -top-8 left-1/2 transform -translate-x-1/2 z-10';
-    tooltip.textContent = message;
-    
-    element.style.position = 'relative';
-    element.appendChild(tooltip);
-    
-    setTimeout(() => {
-        tooltip.remove();
-    }, 2000);
+function populateAbout(member) {
+    safeUpdate('member-bio', member.bio || '<p class="text-gray-500 italic">Bio coming soon...</p>', true);
 }
 
-// Add scroll animations
-function initializeScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+function populateExpertise(member) {
+    const container = document.getElementById('member-expertise');
+    if (!container) return;
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('slide-up');
-            }
-        });
-    }, observerOptions);
+    const expertise = member.expertise || ['Technology Enthusiast', 'Team Player', 'Problem Solver'];
     
-    // Observe all sections for animation
-    const animateElements = document.querySelectorAll('.sidebar-card, .achievement-item');
-    animateElements.forEach(el => {
-        observer.observe(el);
-    });
+    container.innerHTML = expertise.map(skill => 
+        `<span class="expertise-tag px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full text-sm font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all">${skill}</span>`
+    ).join('');
 }
 
-// Initialize page functionality
+function populateAchievements(member) {
+    const container = document.getElementById('member-achievements');
+    if (!container) return;
+    
+    const achievements = member.achievements || [
+        'Active community member',
+        'Participated in team projects',
+        'Contributing to GDG growth'
+    ];
+    
+    container.innerHTML = achievements.map(achievement => 
+        `<div class="achievement-item flex items-start space-x-3 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl border-l-4 border-yellow-500 hover:shadow-md transition-all group">
+            <i data-lucide="award" class="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"></i>
+            <span class="text-gray-700 font-medium">${achievement}</span>
+        </div>`
+    ).join('');
+}
+
+function populateResponsibilities(member) {
+    const responsibilities = roleDetails[member.role] || 
+        `As ${member.role}, this member contributes significantly to the ${member.team} team's success and helps drive our community initiatives forward.`;
+    
+    safeUpdate('key-responsibilities', responsibilities);
+}
+
+function populateSidebar(member) {
+    // Contact email
+    const emailBtn = document.getElementById('contact-email');
+    if (emailBtn && member.email) {
+        emailBtn.href = `mailto:${member.email}`;
+    }
+    
+    // Social links
+    const socialContainer = document.getElementById('social-links');
+    if (socialContainer) {
+        if (member.socials && member.socials.length > 0) {
+            socialContainer.innerHTML = member.socials.map(social => {
+                const icon = socialIconMap[social.type] || 'link';
+                return `<a href="${social.url}" target="_blank" rel="noopener noreferrer" 
+                    class="flex items-center justify-center w-12 h-12 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-xl transition-all hover:scale-110 shadow-md"
+                    aria-label="${member.name} on ${social.type}">
+                    <i data-lucide="${icon}" class="w-5 h-5"></i>
+                </a>`;
+            }).join('');
+        } else {
+            socialContainer.innerHTML = `
+                <div class="text-white/70 text-sm flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-xl">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    <span>Social links coming soon</span>
+                </div>
+            `;
+        }
+    }
+    
+    // Details
+    safeUpdate('member-department', member.department || 'Computer Science');
+    safeUpdate('member-university', member.university || 'Comsats University Islamabad, Wah Campus');
+    safeUpdate('membership-type', member.membershipType || 'Member');
+    
+    const joiningDate = typeof formatDate === 'function'
+        ? formatDate(member.joiningDate || '2023-01-01')
+        : member.joiningDate || '2023-01-01';
+    safeUpdate('joining-date', joiningDate);
+    
+    safeUpdate('primary-role', member.role);
+}
+
+// Initialize
 function initializePage() {
     console.log('Initializing member profile page...');
-    
     loadMemberProfile();
-    initializeInteractiveElements();
-    initializeScrollAnimations();
-    
-    // Add smooth scroll behavior for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
 }
 
-// Wait for members.js to load and DOM to be ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializePage);
 } else {
-    // DOM is already loaded
-    // Add a small delay to ensure members.js is fully loaded
     setTimeout(initializePage, 100);
 }
