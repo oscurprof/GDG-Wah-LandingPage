@@ -100,7 +100,14 @@ function getMemberIdFromUrl() {
 function loadMemberProfile() {
     const memberId = getMemberIdFromUrl();
     
-    // Use the centralized function from members.js
+    // Check if getMemberById is available (from members.js)
+    if (typeof getMemberById !== 'function') {
+        console.error('getMemberById function not found. Make sure members.js is loaded first.');
+        document.getElementById('loading-section').classList.add('hidden');
+        document.getElementById('error-section').classList.remove('hidden');
+        return;
+    }
+    
     const member = getMemberById(memberId);
     
     if (!member) {
@@ -131,7 +138,10 @@ function loadMemberProfile() {
     
     // Add fade-in animation
     setTimeout(() => {
-        document.querySelector('.profile-card').classList.add('fade-in');
+        const profileCard = document.querySelector('.profile-card');
+        if (profileCard) {
+            profileCard.classList.add('fade-in');
+        }
     }, 100);
 }
 
@@ -163,11 +173,19 @@ function populateDetailedInfo(member) {
     
     // Membership details
     document.getElementById('membership-type').textContent = member.membershipType || 'Member';
-    document.getElementById('joining-date').textContent = formatDate(member.joiningDate || '2023-01-01');
+    
+    // Use formatDate if available from members.js
+    const joiningDateText = typeof formatDate === 'function' ? 
+        formatDate(member.joiningDate || '2023-01-01') : 
+        member.joiningDate || '2023-01-01';
+    document.getElementById('joining-date').textContent = joiningDateText;
+    
     document.getElementById('club-name').textContent = member.club || 'GDG Wah Campus';
     
     // Membership duration
-    const duration = getMembershipDuration(member.joiningDate || '2023-01-01');
+    const duration = typeof getMembershipDuration === 'function' ? 
+        getMembershipDuration(member.joiningDate || '2023-01-01') : 
+        '1+ years';
     document.getElementById('membership-duration').textContent = duration;
     document.getElementById('team-role').textContent = member.role.split(' ').pop(); // Last word of role
     
@@ -355,15 +373,10 @@ function initializePage() {
     });
 }
 
-// Export functions for use in other files
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        loadMemberProfile,
-        populateBasicInfo,
-        populateDetailedInfo,
-        populateRoleDetails,
-        populateSocialLinks,
-        initializeInteractiveElements,
-        showTooltip
-    };
+// Wait for members.js to load before initializing
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializePage);
+} else {
+    // DOM is already loaded, initialize immediately
+    initializePage();
 }
