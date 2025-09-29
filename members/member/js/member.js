@@ -167,9 +167,9 @@ function populateAchievements(member) {
     ];
     
     container.innerHTML = achievements.map(achievement => 
-        `<div class="achievement-item flex items-start space-x-3 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl border-l-4 border-yellow-500 hover:shadow-md transition-all group">
-            <i data-lucide="award" class="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"></i>
-            <span class="text-gray-700 font-medium">${achievement}</span>
+        `<div class="achievement-item flex items-start space-x-3 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl border-l-4 border-yellow-500 hover:shadow-lg hover:from-yellow-500 hover:to-orange-500 transition-all duration-300 group cursor-pointer">
+            <i data-lucide="award" class="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5 group-hover:scale-110 group-hover:text-white transition-all duration-300"></i>
+            <span class="text-gray-700 font-medium group-hover:text-white transition-colors duration-300">${achievement}</span>
         </div>`
     ).join('');
 }
