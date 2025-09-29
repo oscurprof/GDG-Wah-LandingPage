@@ -27,7 +27,7 @@ const membersData = {
         name: "Ubaid-Ur-Rehman",
         role: "Campus Lead",
         team: "Executives",
-        imageUrl: "https://placehold.co/256x256/DB4437/FFFFFF?text=Ubaid",
+        imageUrl: "/assets/images/M002.png",
         bio: "<p>Ubaid-Ur-Rehman is the Campus Lead, driving the chapter's initiatives and fostering a collaborative environment for all members. As a passionate software developer and community builder, he has been instrumental in organizing numerous tech events, workshops, and hackathons.</p><p>His leadership has helped establish strong partnerships with industry professionals and has created opportunities for students to gain real-world experience through internships and project collaborations.</p>",
         joiningDate: "2025-09-11",
         membershipStatus: "Active",
